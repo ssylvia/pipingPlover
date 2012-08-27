@@ -80,26 +80,6 @@ h1{
 	text-decoration:underline;
 }
 
-#timeSliderBlind{
-	position:absolute;
-	top:0;
-	height:100%;
-	width:100%;
-	background-color:#444;
-	z-index:1000
-}
-
-#timeSliderCon{
-	width:80%;
-	margin:auto;
-}
-
-.timeControl{
-	display:none;
-	height:25px;
-	cursor:pointer;
-}
-
 #tabArea{
 	padding-left:20px;
 }
@@ -157,44 +137,27 @@ h1{
 	font-size:0.9em;
 }
 
-#descriptionPanel {
-	height:45%;
-	overflow:auto;
+#imgCon{
+    height:300px;
+    width:450px;
+    overflow:hidden;
 }
 
-.description{
-	display:none;
-	padding:20px;
+#fader{
+    position:absolute;
+    background-color:#000;
+    height:100%;
+    width:100%;
 }
 
-.mapTitle{
-	display:none;
-	padding:20px 20px 10px 20px;
-	color:#444;
-	font-weight:bold;
+#textCon{
+    padding:25px;
 }
 
-#legendHeader {
-	background:#444;
-    padding:5px 10px 5px 10px;
-}
-
-#legendPanel{
-	position:relative;
-	overflow:auto;
-}
-
-.legend {
-	display:none;
-	padding:20px;
-	font-family:Arial, Helvetica, sans-serif;
-}
-
-.map{
-	position:absolute;
-	top:0;
-	height:100%;
-	width:100%;
+#sectionTitle{
+    color:#444;
+    margin-bottom:10px;
+    font-weight:bold;
 }
 
 #mapPane{
@@ -220,23 +183,6 @@ h1{
 	height:100%;
 	width:100%;
 	z-index:1000;
-}
-
-#map0{
-	display:block;
-}
-
-#timeDisplay{
-	position:absolute;
-	top: 5%;
-	background-color:#444;
-	color:#fff;
-	font-family:Arial, Helvetica, sans-serif;
-	padding:10px;
-	z-index:100;
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border-radius: 6px;
 }
 
 #loadingCon{

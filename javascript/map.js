@@ -7,7 +7,8 @@ dojo.require("dijit.dijit"); // optimize: load dijit layer
 dojo.require("dijit.layout.BorderContainer");
 dojo.require("dijit.layout.ContentPane");
 
-var urlObject;
+var urlObject,
+    map;
 
 var initMap = function(){
 
@@ -25,11 +26,35 @@ var initMap = function(){
     urlObject.query = urlObject.query || {};
 
     createMap();
-    
+
     $("#title").html(configOptions.title);
     $("#subtitle").html(configOptions.subtitle);
+
+    $("#sectionTitle").html(sectionData[0].title);
+    $("#sectionText").html(sectionData[0].text);
+
+     $("#fader").imageFader();
 
 };
 
 var createMap = function(){
+    var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap,"mapPane",{
+        mapOptions: {
+            slider : true,
+            nav : false,
+            wrapAround180 : true
+        }
+    });
+
+    mapDeferred.addCallback(function(response){
+        map = response.map;
+
+        dojo.connect(dijit.byId("mapPane"),"resize",map,map.resize);
+
+        var layers = response.itemInfo.itemData,operationalLayers;
+
+    });
+    mapDeferred.addErrback(function(error) {
+        console.log("Map creation failed: ", dojo.toJson(error));
+    });
 };

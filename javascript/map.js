@@ -33,7 +33,17 @@ var initMap = function(){
     $("#sectionTitle").html(sectionData[0].title);
     $("#sectionText").html(sectionData[0].text);
 
-     $("#fader").imageFader();
+    dojo.forEach(sectionData[0].images,function(img){
+        $("#fader").append("<li><img src='"+img.src+"' caption='"+img.copyright+"' class='galleryImg' alt=''></li>");
+        $("#imgSelector").append("<span class='selectionBullet'>&bull;</span>");
+    });
+    $("#imgSelector").css("left",($("#leftPane").width() - $("#imgSelector").width())/2);
+    $(".selectionBullet").eq(0).addClass("selectionBulletSelected");
+
+    $("#fader").imageFader({
+        captions : true,
+        captionAttr : "caption"
+    });
 
 };
 

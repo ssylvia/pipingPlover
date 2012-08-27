@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9">
+        <title>Beating the Odds: A Year in the Life of a Piping Plover</title>
+        <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.1/js/esri/dijit/css/Popup.css">
+        <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.1/js/dojo/dijit/themes/tundra/tundra.css">
+        <link rel="stylesheet" type="text/css" href="css/layout.css"/>
+        <link rel="stylesheet" type="text/css" href="css/popup.css"/>
+
+        <script type="text/javascript">
+            var djConfig = {
+                parseOnLoad: true
+            };
+        </script>
+        <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=3.1compact"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+        <script type="text/javascript" src="javascript/config.js"></script>
+        <script type="text/javascript" src="javascript/map.js"></script>
+
+        <!--Social Media Links-->
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">stLight.options({publisher: "77225c91-2742-42f7-b1b4-bddda99a9bde"}); </script>
+        <!--END Social Media Links-->
+        <!--Google Analytics Start-->
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-26529417-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+        <!--Google Analytics End-->
+    </head>
+    <body class="tundra">
+        <div id="mainWindow" dojotype="dijit.layout.BorderContainer" design="headline" gutters="false">
+
+            <!--Banner-->
+            <div id="banner" dojotype="dijit.layout.BorderContainer" gutters="false" region="top">
+
+                <!--Header-->
+                <div id="headerArea" dojotype="dijit.layout.BorderContainer" region="top">
+                    <div id="titleText" dojotype="dijit.layout.ContentPane" region="center">
+                        <h1 id="title"></h1>
+                        <p id="subtitle"></p>
+                    </div><!--/titleText-->
+                    <div id="logoArea" dojotype="dijit.layout.ContentPane" region="right">
+                        <div id="social"><a id="smLink" href="http://storymaps.esri.com" target="_blank">A story map </a><span class='st_facebook'></span><span class='st_twitter'></span></div>
+                        <div id="logo"><a style="margin-right:20px;" class="logoLink" href="http://www.audubon.org/" target="_blank"><img class="logoImg" src="images/audubon.png" alt="Esri - Home"></a><a class="logoLink" href="http://www.esri.com" target="_blank"><img class="logoImg" src="images/esriGlobeLogow.png" alt="Esri - Home"></a></div>
+                    </div><!--/logoArea-->
+                </div><!--/header-->
+
+                <!--Tab Area-->
+                <div id="tabArea" dojotype="dijit.layout.ContentPane" region="center">
+                </div><!--/tabArea-->
+
+            </div><!--/banner-->
+
+            <!--Content-->
+            <div id="content" dojotype="dijit.layout.BorderContainer" gutters="false" region="center">
+                <div id="leftPane" dojotype="dijit.layout.ContentPane" region="left">
+                    
+                </div><!--/leftPane-->
+                <div id="mapPane" dojotype="dijit.layout.ContentPane" region="center">
+                    <div id="shadowDiv"></div>
+                </div><!--/mapPane-->
+            </div><!--/content-->
+
+        </div><!--/main-->
+
+    </body>
+</html>

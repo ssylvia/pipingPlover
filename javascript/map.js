@@ -8,7 +8,8 @@ dojo.require("dijit.layout.BorderContainer");
 dojo.require("dijit.layout.ContentPane");
 
 var urlObject,
-    map;
+    map,
+    section = 0;
 
 var initMap = function(){
 
@@ -25,24 +26,38 @@ var initMap = function(){
     urlObject = esri.urlToObject(document.location.href);
     urlObject.query = urlObject.query || {};
 
+    if(urlObject.query.season){
+        if(urlObject.query.season === "summer"){
+            section = 1;
+        }
+        else if(urlObject.query.season === "fall"){
+            section = 2;
+        }
+        else if(urlObject.query.season === "winter"){
+            section = 3;
+        }
+        else if(urlObject.query.season === "spring"){
+            section = 4;
+        }
+        else{
+            section = 0;
+        }
+    }
+
     createMap();
 
     $("#title").html(configOptions.title);
     $("#subtitle").html(configOptions.subtitle);
 
-    $("#sectionTitle").html(sectionData[0].title);
-    $("#sectionText").html(sectionData[0].text);
-
-    dojo.forEach(sectionData[0].images,function(img){
-        $("#fader").append("<li><img src='"+img.src+"' caption='"+img.copyright+"' class='galleryImg' alt=''></li>");
-        $("#imgSelector").append("<span class='selectionBullet'>&bull;</span>");
-    });
-    $("#imgSelector").css("left",($("#leftPane").width() - $("#imgSelector").width())/2);
-    $(".selectionBullet").eq(0).addClass("selectionBulletSelected");
+    setSection(section);
 
     $("#fader").imageFader({
         captions : true,
-        captionAttr : "caption"
+        captionAttr : "caption",
+        animationEnd : function(obj){
+            $(".selectionBullet").removeClass("selectionBulletSelected");
+            $(".selectionBullet").eq(obj.index).addClass("selectionBulletSelected");
+        }
     });
 
 };

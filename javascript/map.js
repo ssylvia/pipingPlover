@@ -9,7 +9,8 @@ dojo.require("dijit.layout.ContentPane");
 
 var urlObject,
     map,
-    section = 0;
+    section = 0,
+    firstLoad = false;
 
 var initMap = function(){
 
@@ -50,15 +51,6 @@ var initMap = function(){
     $("#subtitle").html(configOptions.subtitle);
 
     setSection(section);
-
-    $("#fader").imageFader({
-        captions : true,
-        captionAttr : "caption",
-        animationEnd : function(obj){
-            $(".selectionBullet").removeClass("selectionBulletSelected");
-            $(".selectionBullet").eq(obj.index).addClass("selectionBulletSelected");
-        }
-    });
 
 };
 

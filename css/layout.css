@@ -169,6 +169,7 @@ h1{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    cursor:pointer;
 }
 
 #imgSelector{
@@ -189,7 +190,7 @@ h1{
 }
 
 #textCon{
-    padding:25px;
+    padding:10px 25px 25px 25px;
 }
 
 #sectionTitle{

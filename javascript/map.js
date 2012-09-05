@@ -12,6 +12,21 @@ var urlObject,
     section = 0,
     firstLoad = false;
 
+var findLayerName = function(name){
+    var layerName;
+    dojo.forEach(map.layerIds,function(lyr){
+        if(lyr.search(name) !== -1){
+            layerName = lyr;
+        }
+    });
+    dojo.forEach(map.graphicsLayerIds,function(lyr){
+        if(lyr.search(name) !== -1){
+            layerName = lyr;
+        }
+    });
+    return layerName;
+};
+
 var initMap = function(){
 
     if(configOptions.geometryserviceurl && location.protocol === "https:"){

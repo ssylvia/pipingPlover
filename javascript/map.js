@@ -19,11 +19,13 @@ var findLayerName = function(name){
             layerName = lyr;
         }
     });
+    /*
     dojo.forEach(map.graphicsLayerIds,function(lyr){
         if(lyr.search(name) !== -1){
             layerName = lyr;
         }
     });
+    */
     return layerName;
 };
 
@@ -65,8 +67,6 @@ var initMap = function(){
     $("#title").html(configOptions.title);
     $("#subtitle").html(configOptions.subtitle);
 
-    setSection(section);
-
 };
 
 var createMap = function(){
@@ -84,6 +84,8 @@ var createMap = function(){
         dojo.connect(dijit.byId("mapPane"),"resize",map,map.resize);
 
         var layers = response.itemInfo.itemData,operationalLayers;
+
+        setSection(section);
 
     });
     mapDeferred.addErrback(function(error) {

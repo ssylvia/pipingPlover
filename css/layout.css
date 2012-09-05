@@ -169,6 +169,18 @@ h1{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+#playPause{
+    display:none;
+    position:absolute;
+    font-size:48px;
+    color:#fff;
+    text-shadow:0px 0px 15px #000000;
+    cursor:pointer;
+    top:290px;
+    left:200px;
+    z-index:100;
     cursor:pointer;
 }
 

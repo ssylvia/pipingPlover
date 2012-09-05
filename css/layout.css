@@ -270,3 +270,8 @@ g,v{
 .dijitToggleButton, .dijitButton, .dijitDropDownButton, .dijitComboButton{
 	display:none;
 }
+
+#zoomImg{
+    position:absolute;
+    z-index:1000;
+}

@@ -49,4 +49,11 @@ var setSection = function(sec){
         $("#fader").imageFader("update");
     }
 
+    $(".galleryImg").click(function(){
+        //$("#fader").imageFader("pause");
+        //$("body").append("<img id='zoomImg' alt='' src='"+$(this).attr("src")+"'>");
+        //$("#zoomImg").css("width",$(this).width()).css("height",$(this).height()).css("left",$(this).offset().left).css("top",$(this).offset().top);
+        
+    });
+
 };

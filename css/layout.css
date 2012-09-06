@@ -145,7 +145,6 @@ h1{
 
 #fader{
     position:absolute;
-    background-color:#000;
     height:275px;
     width:400px;
     left:25px;
@@ -155,9 +154,8 @@ h1{
 .imageFaderCaption{
     position:absolute;
     margin:0;
-    padding:5px;
-    bottom:0;
-    color:#fff;
+    bottom:-25px;
+    color:#000;
     font-size:10px;
     z-index:10;
 }
@@ -219,8 +217,9 @@ h1{
 }
 
 #imgSelector{
-    margin-top:300px;
-    text-align:center;
+    margin:300px 25px 0 0;
+    text-align:right;
+
     color:#ccc;
     font-size:28px;
 }

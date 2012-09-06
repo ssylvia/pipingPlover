@@ -1,9 +1,55 @@
 $(document).ready(function(){
-    $("#fader").mouseenter(function(){
-        $("#playPause").stop(true,true).fadeIn();
+    $("#playPause").click(function(){
+        if($(this).hasClass("icon-pause")){
+            $("#playPause").removeClass("icon-pause");
+            $("#playPause").addClass("icon-play");
+            $("#fader").imageFader("pause");
+        }
+        else{
+            $("#playPause").removeClass("icon-play");
+            $("#playPause").addClass("icon-pause");
+            $("#fader").imageFader("play");
+        }
     });
-    $("#fader").mouseleave(function(){
+    $("#faderCon").mouseenter(function(){
+        if($("#fader").children("li").length > 1){
+            if($("#fader").children("li").first().hasClass("playingAnimation")){
+                $("#playPause").removeClass("icon-play");
+                $("#playPause").addClass("icon-pause");
+            }
+            else{
+                $("#playPause").removeClass("icon-pause");
+                $("#playPause").addClass("icon-play");
+            }
+            $("#playPause").stop(true,true).fadeTo("fast","0.75");
+        }
+    });
+    $("#faderCon").mouseleave(function(){
         $("#playPause").stop(true,true).fadeOut();
+    });
+    $(".skip").click(function(){
+        if($(this).hasClass("icon-right-open")){
+            $("#fader").imageFader("next");
+        }
+        else{
+            $("#fader").imageFader("prev");
+        }
+    });
+    $("#prevCon").mouseenter(function(){
+        if($("#fader").children("li").length > 1){
+            $("#prev").stop(true,true).fadeTo("fast","0.75");
+        }
+    });
+    $("#prevCon").mouseleave(function(){
+        $("#prev").stop(true,true).fadeOut();
+    });
+    $("#nextCon").mouseenter(function(){
+        if($("#fader").children("li").length > 1){
+            $("#next").stop(true,true).fadeTo("fast","0.75");
+        }
+    });
+    $("#nextCon").mouseleave(function(){
+        $("#next").stop(true,true).fadeOut();
     });
 });
 

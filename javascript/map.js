@@ -19,13 +19,11 @@ var findLayerName = function(name){
             layerName = lyr;
         }
     });
-    /*
     dojo.forEach(map.graphicsLayerIds,function(lyr){
         if(lyr.search(name) !== -1){
             layerName = lyr;
         }
     });
-    */
     return layerName;
 };
 

@@ -116,52 +116,86 @@ var setSection = function(sec){
 };
 
 var setLayers = function(sec){
+    //Remove if layers are removed from map
+    map.getLayer(findLayerName("LifecyclePoints_1010")).hide();
+    map.getLayer(findLayerName("AllRangePoints_5620")).hide();
+   //End remove
+    map.getLayer(findLayerName("LifecyclePoints_2241_0")).hide();
+    map.getLayer(findLayerName("AllRangePoints_6275")).show();
     if(sec === 1){
-        map.getLayer(findLayerName("MigrationArrows")).hide();
-        map.getLayer(findLayerName("PloverPoints")).hide();
-        map.getLayer(findLayerName("PloverPoints")).setVisibleLayers([2]);
-        map.getLayer(findLayerName("PloverPoints")).show();
+        //map.getLayer(findLayerName("MigrationArrows")).hide();
         map.getLayer(findLayerName("summer")).show();
         map.getLayer(findLayerName("winter")).hide();
+        dojo.forEach(map.getLayer(findLayerName("AllRangePoints_6275")).graphics,function(grp){
+            console.log(grp);
+            if(grp.attributes.Season === sec){
+                grp.show();
+            }
+            else{
+                grp.hide();
+            }
+        });
 
         map.setExtent(new esri.geometry.Extent({"xmin":-10079006.019723145,"ymin":3137303.833390451,"xmax":-6018671.077215662,"ymax":7114475.289123686,
   "spatialReference":{"wkid":102100}}));
     }
     else if(sec === 2){
-        map.getLayer(findLayerName("MigrationArrows")).setVisibleLayers([0]);
-        map.getLayer(findLayerName("MigrationArrows")).show();
-        map.getLayer(findLayerName("PloverPoints")).setVisibleLayers([0]);
-        map.getLayer(findLayerName("PloverPoints")).show();
+        //map.getLayer(findLayerName("MigrationArrows")).setVisibleLayers([0]);
+        //map.getLayer(findLayerName("MigrationArrows")).show();
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).hide();
+        dojo.forEach(map.getLayer(findLayerName("AllRangePoints_6275")).graphics,function(grp){
+            console.log(grp);
+            if(grp.attributes.Season === sec){
+                grp.show();
+            }
+            else{
+                grp.hide();
+            }
+        });
 
         map.setExtent(new esri.geometry.Extent({"xmin":-10504607.393214896,"ymin":2265310.214713391,"xmax":-6444272.450707414,"ymax":6242481.670446625,
   "spatialReference":{"wkid":102100}}));
     }
     else if(sec === 3){
-        map.getLayer(findLayerName("MigrationArrows")).hide();
-        map.getLayer(findLayerName("PloverPoints")).setVisibleLayers([3]);
-        map.getLayer(findLayerName("PloverPoints")).show();
+        //map.getLayer(findLayerName("MigrationArrows")).hide();
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).show();
+        dojo.forEach(map.getLayer(findLayerName("AllRangePoints_6275")).graphics,function(grp){
+            console.log(grp);
+            if(grp.attributes.Season === sec){
+                grp.show();
+            }
+            else{
+                grp.hide();
+            }
+        });
 
         map.setExtent(new esri.geometry.Extent({"xmin":-11297106.502475392,"ymin":1180515.909290458,"xmax":-7236771.559967909,"ymax":5157687.365023692,
   "spatialReference":{"wkid":102100}}));
     }
     else if(sec === 4){
-        map.getLayer(findLayerName("MigrationArrows")).setVisibleLayers([1]);
-        map.getLayer(findLayerName("MigrationArrows")).show();
-        map.getLayer(findLayerName("PloverPoints")).setVisibleLayers([1]);
-        map.getLayer(findLayerName("PloverPoints")).show();
+        //map.getLayer(findLayerName("MigrationArrows")).setVisibleLayers([1]);
+        //map.getLayer(findLayerName("MigrationArrows")).show();
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).hide();
+        dojo.forEach(map.getLayer(findLayerName("AllRangePoints_6275")).graphics,function(grp){
+            console.log(grp);
+            if(grp.attributes.Season === sec){
+                grp.show();
+            }
+            else{
+                grp.hide();
+            }
+        });
 
         map.setExtent(new esri.geometry.Extent({"xmin":-10504607.393214896,"ymin":2265310.214713391,"xmax":-6444272.450707414,"ymax":6242481.670446625,
   "spatialReference":{"wkid":102100}}));
     }
     else{
-        map.getLayer(findLayerName("MigrationArrows")).hide();
-        map.getLayer(findLayerName("PloverPoints")).hide();
+        //map.getLayer(findLayerName("MigrationArrows")).hide();
+        map.getLayer(findLayerName("AllRangePoints_6275")).hide();
+        map.getLayer(findLayerName("LifecyclePoints_2241_0")).show();
         map.getLayer(findLayerName("summer")).show();
         map.getLayer(findLayerName("winter")).show();
 

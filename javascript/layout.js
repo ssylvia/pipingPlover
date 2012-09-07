@@ -116,10 +116,6 @@ var setSection = function(sec){
 };
 
 var setLayers = function(sec){
-    //Remove if layers are removed from map
-    map.getLayer(findLayerName("LifecyclePoints_1010")).hide();
-    map.getLayer(findLayerName("AllRangePoints_5620")).hide();
-   //End remove
     map.getLayer(findLayerName("LifecyclePoints_2241_0")).hide();
     map.getLayer(findLayerName("AllRangePoints_6275")).show();
     if(sec === 1){
@@ -127,7 +123,6 @@ var setLayers = function(sec){
         map.getLayer(findLayerName("summer")).show();
         map.getLayer(findLayerName("winter")).hide();
         dojo.forEach(map.getLayer(findLayerName("AllRangePoints_6275")).graphics,function(grp){
-            console.log(grp);
             if(grp.attributes.Season === sec){
                 grp.show();
             }
@@ -145,7 +140,6 @@ var setLayers = function(sec){
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).hide();
         dojo.forEach(map.getLayer(findLayerName("AllRangePoints_6275")).graphics,function(grp){
-            console.log(grp);
             if(grp.attributes.Season === sec){
                 grp.show();
             }
@@ -162,7 +156,6 @@ var setLayers = function(sec){
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).show();
         dojo.forEach(map.getLayer(findLayerName("AllRangePoints_6275")).graphics,function(grp){
-            console.log(grp);
             if(grp.attributes.Season === sec){
                 grp.show();
             }
@@ -180,7 +173,6 @@ var setLayers = function(sec){
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).hide();
         dojo.forEach(map.getLayer(findLayerName("AllRangePoints_6275")).graphics,function(grp){
-            console.log(grp);
             if(grp.attributes.Season === sec){
                 grp.show();
             }

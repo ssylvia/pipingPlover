@@ -117,12 +117,12 @@ var setSection = function(sec){
 
 var setLayers = function(sec){
     map.getLayer(findLayerName("Lifecycle")).hide();
-    map.getLayer(findLayerName("AllRange")).show();
+    map.getLayer(findLayerName("Story_points")).show();
     if(sec === 1){
         //map.getLayer(findLayerName("MigrationArrows")).hide();
         map.getLayer(findLayerName("summer")).show();
         map.getLayer(findLayerName("winter")).hide();
-        dojo.forEach(map.getLayer(findLayerName("AllRange")).graphics,function(grp){
+        dojo.forEach(map.getLayer(findLayerName("Story_points")).graphics,function(grp){
             if(grp.attributes.Season === sec){
                 grp.show();
             }
@@ -139,7 +139,7 @@ var setLayers = function(sec){
         //map.getLayer(findLayerName("MigrationArrows")).show();
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).hide();
-        dojo.forEach(map.getLayer(findLayerName("AllRange")).graphics,function(grp){
+        dojo.forEach(map.getLayer(findLayerName("Story_points")).graphics,function(grp){
             if(grp.attributes.Season === sec){
                 grp.show();
             }
@@ -155,7 +155,7 @@ var setLayers = function(sec){
         //map.getLayer(findLayerName("MigrationArrows")).hide();
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).show();
-        dojo.forEach(map.getLayer(findLayerName("AllRange")).graphics,function(grp){
+        dojo.forEach(map.getLayer(findLayerName("Story_points")).graphics,function(grp){
             if(grp.attributes.Season === sec){
                 grp.show();
             }
@@ -172,7 +172,7 @@ var setLayers = function(sec){
         //map.getLayer(findLayerName("MigrationArrows")).show();
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).hide();
-        dojo.forEach(map.getLayer(findLayerName("AllRange")).graphics,function(grp){
+        dojo.forEach(map.getLayer(findLayerName("Story_points")).graphics,function(grp){
             if(grp.attributes.Season === sec){
                 grp.show();
             }
@@ -186,7 +186,7 @@ var setLayers = function(sec){
     }
     else{
         //map.getLayer(findLayerName("MigrationArrows")).hide();
-        map.getLayer(findLayerName("AllRange")).hide();
+        map.getLayer(findLayerName("Story_points")).hide();
         map.getLayer(findLayerName("Lifecycle")).show();
         map.getLayer(findLayerName("summer")).show();
         map.getLayer(findLayerName("winter")).show();

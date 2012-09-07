@@ -10,7 +10,9 @@ dojo.require("dijit.layout.ContentPane");
 var urlObject,
     map,
     section = 0,
-    firstLoad = false;
+    firstLoad = false,
+    popup,
+    setPopup = true;
 
 var findLayerName = function(name){
     var layerName;
@@ -68,11 +70,17 @@ var initMap = function(){
 };
 
 var createMap = function(){
+
+    popup = new esri.dijit.Popup({
+        highlight:false
+    }, dojo.create("div"));
+
     var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap,"mapPane",{
         mapOptions: {
             slider : true,
             nav : false,
-            wrapAround180 : true
+            wrapAround180 : true,
+            infoWindow : popup
         }
     });
 
@@ -89,4 +97,23 @@ var createMap = function(){
     mapDeferred.addErrback(function(error) {
         console.log("Map creation failed: ", dojo.toJson(error));
     });
+
+    dojo.connect(popup,"onSetFeatures",function(){
+        if(section !== 0){
+            var newFtr = [];
+            dojo.forEach(popup.features,function(ftr){
+                if(ftr.attributes.Season === section){
+                    newFtr.push(ftr);
+                }
+            });
+            if (setPopup === true){
+                setPopup = false;
+                popup.setFeatures(newFtr);
+            }
+            else{
+                setPopup = true;
+            }
+        }
+    });
+
 };

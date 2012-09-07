@@ -67,6 +67,9 @@ var setUpTabs = function(){
 
 var setSection = function(sec){
 
+    popup.hide();
+    section = sec;
+
     $("#sectionTitle").html(sectionData[sec].title);
     $("#sectionText").html(sectionData[sec].text);
 

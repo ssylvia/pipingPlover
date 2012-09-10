@@ -1,58 +1,3 @@
-$(document).ready(function(){
-    $("#playPause").click(function(){
-        if($(this).hasClass("icon-pause")){
-            $("#playPause").removeClass("icon-pause");
-            $("#playPause").addClass("icon-play");
-            $("#fader").imageFader("pause");
-        }
-        else{
-            $("#playPause").removeClass("icon-play");
-            $("#playPause").addClass("icon-pause");
-            $("#fader").imageFader("play");
-        }
-    });
-    $("#faderCon").mouseenter(function(){
-        if($("#fader").children("li").length > 1){
-            if($("#fader").children("li").first().hasClass("playingAnimation")){
-                $("#playPause").removeClass("icon-play");
-                $("#playPause").addClass("icon-pause");
-            }
-            else{
-                $("#playPause").removeClass("icon-pause");
-                $("#playPause").addClass("icon-play");
-            }
-            $("#playPause").stop(true,true).fadeTo("fast","0.75");
-        }
-    });
-    $("#faderCon").mouseleave(function(){
-        $("#playPause").stop(true,true).fadeOut();
-    });
-    $(".skip").click(function(){
-        if($(this).hasClass("icon-right-open")){
-            $("#fader").imageFader("next");
-        }
-        else{
-            $("#fader").imageFader("prev");
-        }
-    });
-    $("#prevCon").mouseenter(function(){
-        if($("#fader").children("li").length > 1){
-            $("#prev").stop(true,true).fadeTo("fast","0.75");
-        }
-    });
-    $("#prevCon").mouseleave(function(){
-        $("#prev").stop(true,true).fadeOut();
-    });
-    $("#nextCon").mouseenter(function(){
-        if($("#fader").children("li").length > 1){
-            $("#next").stop(true,true).fadeTo("fast","0.75");
-        }
-    });
-    $("#nextCon").mouseleave(function(){
-        $("#next").stop(true,true).fadeOut();
-    });
-});
-
 var setUpTabs = function(){
     dojo.forEach(configOptions.tabTitles,function(tab,i){
         $("#tabArea").append("<div id='tab"+i+"' class='tab'><p id='tabText"+i+"' class='tabText'>"+configOptions.tabTitles[i].title+"</p></div>");
@@ -69,6 +14,8 @@ var setSection = function(sec){
 
     popup.hide();
     section = sec;
+
+    $(".seasonButton").html();
 
     $("#sectionTitle").html(sectionData[sec].title);
     $("#sectionText").html(sectionData[sec].text);
@@ -95,8 +42,8 @@ var setSection = function(sec){
     if(firstLoad === false){
         firstLoad = true;
         $("#fader").imageFader({
-            captions : true,
-            captionAttr : "caption",
+            //captions : true,
+            //captionAttr : "caption",
             animationEnd : function(obj){
                 $(".selectionBullet").removeClass("selectionBulletSelected");
                 $(".selectionBullet").eq(obj.index).addClass("selectionBulletSelected");
@@ -106,13 +53,6 @@ var setSection = function(sec){
     else{
         $("#fader").imageFader("update");
     }
-
-    $(".galleryImg").click(function(){
-        //$("#fader").imageFader("pause");
-        //$("body").append("<img id='zoomImg' alt='' src='"+$(this).attr("src")+"'>");
-        //$("#zoomImg").css("width",$(this).width()).css("height",$(this).height()).css("left",$(this).offset().left).css("top",$(this).offset().top);
-
-    });
 
     setLayers(sec);
 

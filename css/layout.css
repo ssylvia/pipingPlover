@@ -151,15 +151,6 @@ h1{
     top:25px;
 }
 
-.imageFaderCaption{
-    position:absolute;
-    margin:0;
-    bottom:-25px;
-    color:#000;
-    font-size:10px;
-    z-index:10;
-}
-
 .galleryImg{
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -169,57 +160,9 @@ h1{
     user-select: none;
 }
 
-#prevCon{
-    position:absolute;
-    height:275px;
-    width:80px;
-    top:25px;
-    left:25px;
-    text-align:center;
-    vertical-align:middle;
-}
-
-#nextCon{
-    position:absolute;
-    height:275px;
-    width:80px;
-    top:25px;
-    left:345px;
-    text-align:center;
-    vertical-align:middle;
-}
-
-.skip{
-    display:none;
-    padding:20px 0 20px 0;
-    margin-top:105px;
-    font-size:30px;
-    color:#fff;
-    text-shadow:0px 0px 15px #000000;
-    cursor:pointer;
-}
-
-.icon-right-open{
-    padding-left:12px;
-}
-
-#playPause{
-    display:none;
-    position:absolute;
-    font-size:38px;
-    color:#fff;
-    text-shadow:0px 0px 15px #000000;
-    cursor:pointer;
-    left:210px;
-    top:145px;
-    z-index:100;
-    cursor:pointer;
-}
-
 #imgSelector{
-    margin:300px 25px 0 0;
-    text-align:right;
-
+    margin:300px 0 0 0;
+    text-align:center;
     color:#ccc;
     font-size:28px;
 }
@@ -319,4 +262,20 @@ g,v{
 #zoomImg{
     position:absolute;
     z-index:1000;
+}
+
+.zoomTo{
+    display:none;
+}
+
+.esriPopup .titleButton.maximize{
+    display:none;
+}
+
+#seasonButton{
+    width:120px;
+    background-color:#f4613f;
+    color:#fff;
+    padding:5px;
+    cursor:pointer;
 }

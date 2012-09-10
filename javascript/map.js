@@ -114,6 +114,9 @@ var createMap = function(){
                 setPopup = true;
             }
         }
+        else{
+            //$(".actionList").html("<p id='seasonButton'>Go to "+popup.features[0].attributes.Season+"</p>");
+        }
     });
 
 };

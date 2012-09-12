@@ -131,56 +131,12 @@ h1{
     width:450px;
 	height:100%;
 	font-size:0.9em;
-}
-
-#imgCon{
-    height:328px;
-    width:450px;
     overflow:hidden;
 }
 
-#fader{
+#contentSlider{
     position:absolute;
-    height:275px;
-    width:400px;
-    left:25px;
-    top:25px;
-}
-
-.galleryImg{
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-#imgSelector{
-    margin:300px 0 0 0;
-    text-align:center;
-    color:#ccc;
-    font-size:28px;
-}
-
-.selectionBullet{
-    padding:0 3px 0 3px;
-    cursor:pointer;
-}
-
-.selectionBulletSelected{
-    color:#444;
-    cursor:default;
-}
-
-#textCon{
-    padding:10px 25px 25px 25px;
-}
-
-#sectionTitle{
-    color:#444;
-    margin-bottom:10px;
-    font-weight:bold;
+    height:100%;
 }
 
 #mapPane{
@@ -192,11 +148,11 @@ h1{
     height:100%;
     left:-10px;
     width:10px;
-    -moz-box-shadow: 5px 0px 20px 5px #444444;
-    -webkit-box-shadow: 5px 0px 20px 5px #444444;
-    box-shadow: 5px 0px 20px 5px #444444;
-    filter: progid: DXImageTransform.Microsoft.Shadow(strength = 5, direction = 90, color = '#444444');
-    -ms-filter: "progid: DXImageTransform.Microsoft.Shadow(strength = 5, Direction = 90, Color = '#444444')";
+    -moz-box-shadow: 5px 0px 20px 5px #666;
+    -webkit-box-shadow: 5px 0px 20px 5px #666;
+    box-shadow: 5px 0px 20px 5px #666;
+    filter: progid: DXImageTransform.Microsoft.Shadow(strength = 5, direction = 90, color = '#666');
+    -ms-filter: "progid: DXImageTransform.Microsoft.Shadow(strength = 5, Direction = 90, Color = '#666')";
     z-index:20;
 }
 
@@ -266,12 +222,4 @@ g,v{
 
 .esriPopup .titleButton.maximize{
     display:none;
-}
-
-#seasonButton{
-    width:120px;
-    background-color:#f4613f;
-    color:#fff;
-    padding:5px;
-    cursor:pointer;
 }

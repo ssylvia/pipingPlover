@@ -10,7 +10,6 @@ dojo.require("dijit.layout.ContentPane");
 var urlObject,
     map,
     section = 0,
-    firstLoad = false,
     popup,
     setPopup = true;
 

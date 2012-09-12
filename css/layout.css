@@ -1,5 +1,5 @@
 html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input,hr {margin:0; padding:0;}
-html,body{height:100%;width:100%;overflow:hidden; font-family:Georgia, "Times New Roman", Times, serif; color:#444;}
+html,body{height:100%;width:100%;overflow:hidden; font-family:Georgia, "Times New Roman", Times, serif; color:#fff;}
 h1,h2,h3,h4,h5,h6,pre,code,address,caption,cite,code,em,th {font-weight:normal; font-style:normal; font-family:Arial, Helvetica, sans-serif; color:#fff;}
 ul,ol {list-style:none;}
 fieldset,img,hr {border:none; outline:none;}
@@ -137,6 +137,60 @@ h1{
 #contentSlider{
     position:absolute;
     height:100%;
+    width:auto;
+}
+
+.contentSlide{
+    height:100%;
+    width:450px;
+    float:left;
+}
+
+
+.introSlide{
+    background-color:#dadada;
+}
+
+.summerSlide{
+    background-color:#fcd0c5;
+}
+
+.fallSlide{
+    background-color:#f7debe;
+}
+
+.winterSlide{
+    background-color:#cee3ea;
+}
+
+.springSlide{
+    background-color:#e2ecd5;
+}
+
+.photoCredit{
+    background:#000;
+    padding:15px;
+    color#fff;
+    font-size:10px;
+}
+
+.fader{
+    background:#000;
+    height:310px;
+    width:100%;
+}
+
+.photoCaption{
+    background:#000;
+    padding:15px;
+    color#fff;
+    font-size:12px;
+    font-style:italic;
+}
+
+.textContent{
+    padding:15px 25px 15px 25px;
+    color:#000;
 }
 
 #mapPane{

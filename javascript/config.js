@@ -7,15 +7,20 @@ function init(){
         title : "Beating the Odds: A Year in the Life of a Piping Plover",
         subtitle : "Piping Plovers flock to the same shores that attract people. With just 8,000 adult birds left in the world, the Piping Plover is one of our most at-risk species. From Canada to the Caribbean, Audubon is working to safeguard sandy reaches critical to the birds’ survival, and is spreading the message to share the beach.",
         tabTitles : [{
-    		"title" : "<span class='tabTextBig'>I</span>ntro"
+    		"title" : "<span class='tabTextBig'>I</span>ntro",
+            "season" : "intro"
 		},{
-			"title" : "<span class='tabTextBig'>S</span>ummer"
+			"title" : "<span class='tabTextBig'>S</span>ummer",
+            "season" : "summer"
 		},{
-			"title" : "<span class='tabTextBig'>F</span>all"
+			"title" : "<span class='tabTextBig'>F</span>all",
+            "season" : "fall"
 		},{
-			"title" : "<span class='tabTextBig'>W</span>inter"
+			"title" : "<span class='tabTextBig'>W</span>inter",
+            "season" : "winter"
 		},{
-			"title" : "<span class='tabTextBig'>S</span>pring"
+			"title" : "<span class='tabTextBig'>S</span>pring",
+            "season" : "spring"
 		}],
         geometryserviceurl:"http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
         sharingurl :"http://arcgis.com/sharing/content/items"

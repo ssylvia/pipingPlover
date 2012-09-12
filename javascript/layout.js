@@ -13,11 +13,15 @@ var resetLayout = function(){
             $(this).css("width",$("#mapPane").width() - lastWidth - 1);
         }
     });
+
+    $("#contentSlider").css("width",$("#contentSlider").children(".contentSlide").length * 450);
 };
 
 var setUpTabs = function(){
     dojo.forEach(configOptions.tabTitles,function(tab,i){
-        $("#tabArea").append("<div id='tab"+i+"' class='tab'><p id='tabText"+i+"' class='tabText'>"+configOptions.tabTitles[i].title+"</p></div>");
+        $("#tabArea").append("<div id='tab"+i+"' class='tab'><p id='tabText"+i+"' class='tabText'>"+tab.title+"</p></div>");
+        //Content Slider
+        $("#contentSlider").append("<div class='contentSlide tabSlide "+tab.season+"Slide "+tab.season+"'><div class='photoCredit "+tab.season+"'></div><div class='fader "+tab.season+"'></div><div class='photoCaption "+tab.season+"'></div><div class='titleBar "+tab.season+"'></div><div class='textContent "+tab.season+"'>"+sectionData[i].text+"</div></div>");
     });
     $(".tab").eq(section).addClass("selected");
     $(".tab").click(function(){
@@ -32,6 +36,11 @@ var setSection = function(sec){
 
     popup.hide();
     section = sec;
+
+    $(".contentSlide").removeClass("currentSlide").eq(sec).addClass("currentSlide");
+    $("#contentSlider").animate({
+        "left" : -$(".currentSlide").position().left
+    },"fast");
 
     setLayers(sec);
 

@@ -51,19 +51,19 @@ var setSection = function(sec){
         $("#fader").imageFader("update");
     }
 
-    //setLayers(sec);
+    setLayers(sec);
 
 };
 
 var setLayers = function(sec){
     map.getLayer(findLayerName("Lifecycle")).hide();
-    map.getLayer(findLayerName("Story_points")).show();
+    map.getLayer(findLayerName("csv")).show();
     if(sec === 1){
         //map.getLayer(findLayerName("MigrationArrows")).hide();
         map.getLayer(findLayerName("summer")).show();
         map.getLayer(findLayerName("winter")).hide();
-        dojo.forEach(map.getLayer(findLayerName("Story_points")).graphics,function(grp){
-            if(grp.attributes.Season === sec){
+        dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
+            if(grp.attributes.Season_Number === sec){
                 grp.show();
             }
             else{
@@ -79,8 +79,8 @@ var setLayers = function(sec){
         //map.getLayer(findLayerName("MigrationArrows")).show();
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).hide();
-        dojo.forEach(map.getLayer(findLayerName("Story_points")).graphics,function(grp){
-            if(grp.attributes.Season === sec){
+        dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
+            if(grp.attributes.Season_Number === sec){
                 grp.show();
             }
             else{
@@ -95,8 +95,8 @@ var setLayers = function(sec){
         //map.getLayer(findLayerName("MigrationArrows")).hide();
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).show();
-        dojo.forEach(map.getLayer(findLayerName("Story_points")).graphics,function(grp){
-            if(grp.attributes.Season === sec){
+        dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
+            if(grp.attributes.Season_Number === sec){
                 grp.show();
             }
             else{
@@ -112,8 +112,8 @@ var setLayers = function(sec){
         //map.getLayer(findLayerName("MigrationArrows")).show();
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).hide();
-        dojo.forEach(map.getLayer(findLayerName("Story_points")).graphics,function(grp){
-            if(grp.attributes.Season === sec){
+        dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
+            if(grp.attributes.Season_Number === sec){
                 grp.show();
             }
             else{
@@ -126,7 +126,7 @@ var setLayers = function(sec){
     }
     else{
         //map.getLayer(findLayerName("MigrationArrows")).hide();
-        map.getLayer(findLayerName("Story_points")).hide();
+        map.getLayer(findLayerName("csv")).hide();
         map.getLayer(findLayerName("Lifecycle")).show();
         map.getLayer(findLayerName("summer")).show();
         map.getLayer(findLayerName("winter")).show();

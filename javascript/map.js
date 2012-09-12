@@ -75,7 +75,7 @@ var createMap = function(){
         highlight:false
     }, dojo.create("div"));
 
-    var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap,"mapPane",{
+    var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap,"map",{
         mapOptions: {
             slider : true,
             nav : false,
@@ -87,7 +87,7 @@ var createMap = function(){
     mapDeferred.addCallback(function(response){
         map = response.map;
 
-        dojo.connect(dijit.byId("mapPane"),"resize",map,map.resize);
+        dojo.connect(dijit.byId("map"),"resize",map,map.resize);
 
         var layers = response.itemInfo.itemData,operationalLayers;
 

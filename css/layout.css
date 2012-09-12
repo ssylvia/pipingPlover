@@ -81,15 +81,15 @@ h1{
 }
 
 #tabArea{
-	padding-left:20px;
+    height:40px;
+    overflow:hidden;
+    background-color:#9dbf72;
 }
 
 .tab{
 	background:#828282;
-	height:30px;
-	width:170px;
+	height:40px;
 	float:left;
-	margin-left:5px;
 	white-space:nowrap;
 	cursor:pointer;
 }
@@ -110,25 +110,21 @@ h1{
 	background-color:#9dbf72;
 }
 
-.tab:hover{
-	height:35px;
-}
-
 .tabText{
 	color:#fff;
 	font-family:Arial, Helvetica, sans-serif;
 	text-overflow: ellipsis;
     -o-text-overflow:ellipsis;
 	overflow:hidden;
-	padding:2px 5px 0px 7px;
+	padding:0px 5px 0px 7px;
+    font-weight:bold;
 }
 
-#tabText0{
-	padding-top:6px;
-}
-
-.selected{
-	height:35px;
+.tabTextBig{
+    font-size:35px;
+    opacity:0.7;
+    filter: alpha(opacity=70);
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
 }
 
 #leftPane {
@@ -188,7 +184,7 @@ h1{
 }
 
 #mapPane{
-    background-color:#d0cfd4;
+    background-color:#90b5df;
 }
 
 #shadowDiv{

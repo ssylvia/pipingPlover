@@ -1,3 +1,20 @@
+$(window).resize(function(){
+    resetLayout();
+});
+
+var resetLayout = function(){
+    var lastWidth = 0;
+    $(".tab").each(function(){
+        if($(this).index() !== $(".tab").length - 1){
+            $(this).css("width",$("#mapPane").width()/5);
+            lastWidth = lastWidth+$(this).width();
+        }
+        else{
+            $(this).css("width",$("#mapPane").width() - lastWidth - 1);
+        }
+    });
+};
+
 var setUpTabs = function(){
     dojo.forEach(configOptions.tabTitles,function(tab,i){
         $("#tabArea").append("<div id='tab"+i+"' class='tab'><p id='tabText"+i+"' class='tabText'>"+configOptions.tabTitles[i].title+"</p></div>");
@@ -8,6 +25,7 @@ var setUpTabs = function(){
         $(".tab").removeClass("selected");
         $(this).addClass("selected");
     });
+    resetLayout();
 };
 
 var setSection = function(sec){

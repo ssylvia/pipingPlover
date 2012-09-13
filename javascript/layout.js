@@ -49,7 +49,8 @@ var setSection = function(sec){
     popup.hide();
     section = sec;
 
-    $(".contentSlide").removeClass("currentSlide").eq(sec).addClass("currentSlide");
+    $(".contentSlide").removeClass("currentSlide");
+    $(".tabSlide").eq(sec).addClass("currentSlide");
     $("#contentSlider").animate({
         "left" : -$(".currentSlide").position().left
     },"fast");
@@ -65,19 +66,33 @@ var setLayers = function(sec){
             $(".contentSlide."+grp.attributes.Season.toLowerCase()).last().after("<div class='contentSlide popupSlide "+grp.attributes.Season.toLowerCase()+"Slide "+grp.attributes.Season.toLowerCase()+"'><div class='photoCredit "+grp.attributes.Season.toLowerCase()+"'></div><div class='fader "+grp.attributes.Season.toLowerCase()+"'></div><div class='photoCaption "+grp.attributes.Season.toLowerCase()+"'></div><table class='titleBar "+grp.attributes.Season.toLowerCase()+"'><tbody><tr><td class='prevArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='popupTitle "+grp.attributes.Season.toLowerCase()+"title'>"+grp.attributes.Point_name+"</td><td class='nextArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div></td></tr></tbody></table><div class='textContent "+grp.attributes.Season.toLowerCase()+"'>"+grp.attributes.Description+"</div></div>");
         });
 
-        $(".popupSlide").hide();
-
-        $(".contentSlide").last().children(".titleBar").children("tbody").children("tr").children(".nextArrowCon").hide()
+        $(".contentSlide").last().children(".titleBar").children("tbody").children("tr").children(".nextArrowCon").hide();
 
         $(".nextArrowCon").click(function(){
+            var current = undefined;
+            $(".contentSlide").each(function(i){
+                if($(this).hasClass("currentSlide")){
+                    $(this).removeClass("currentSlide");
+                    current = $(this).next();
+                }
+            });
+            current.addClass("currentSlide");
             $("#contentSlider").animate({
-                "left" : $("#contentSlider").position().left - 450
+                "left" : -$(".currentSlide").position().left
             },"fast");
         });
 
         $(".prevArrowCon").click(function(){
+            var current = undefined;
+            $(".contentSlide").each(function(i){
+                if($(this).hasClass("currentSlide")){
+                    $(this).removeClass("currentSlide");
+                    current = $(this).prev();
+                }
+            });
+            current.addClass("currentSlide");
             $("#contentSlider").animate({
-                "left" : $("#contentSlider").position().left + 450
+                "left" : -$(".currentSlide").position().left
             },"fast");
         });
     }

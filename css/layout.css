@@ -5,7 +5,6 @@ ul,ol {list-style:none;}
 fieldset,img,hr {border:none; outline:none;}
 caption,th {text-align:left;}
 table {border-collapse:collapse; border-spacing:0;}
-td {vertical-align:top;}
 
 .tundra .dijitSplitContainer-dijitContentPane, .tundra .dijitBorderContainer-dijitContentPane, .tundra .dijitBorderContainer, .tundra .dijitSplitterV, .tundra .dijitGutterV, .tundra .dijitSplitContainer-child, .tundra .dijitBorderContainer-child{
 	background:none;
@@ -87,7 +86,7 @@ h1{
 }
 
 .tab{
-	background:#828282;
+	background:#988aa4;
 	height:40px;
 	float:left;
 	white-space:nowrap;
@@ -146,9 +145,8 @@ h1{
     float:left;
 }
 
-
 .introSlide{
-    background-color:#dadada;
+    background-color:#e0dce4;
 }
 
 .summerSlide{
@@ -188,9 +186,67 @@ h1{
     font-style:italic;
 }
 
+.titleBar{
+    width:100%;
+    text-align:center;
+}
+
+.tabTitle{
+    color:#fff;
+    font-size:24px;
+    padding:10px;
+}
+
+.titleBar.intro{
+    background-color:#988aa4;
+}
+
+.titleBar.summer{
+    background-color:#f4613f;
+}
+
+.titleBar.fall{
+    background-color:#e48f25;
+}
+
+.titleBar.winter{
+    background-color:#5aa2b8;
+}
+
+.titleBar.spring{
+    background-color:#9dbf72;
+}
+
 .textContent{
     padding:15px 25px 15px 25px;
     color:#000;
+}
+
+.prevArrow{
+    width: 0;
+    height: 0;
+	border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+	border-right: 15px solid #fff;
+}
+
+.nextArrow{
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+	border-left: 15px solid #fff;
+}
+
+.arrowCon{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.intro.prevArrowCon{
+    display:none;
 }
 
 #mapPane{

@@ -88,9 +88,14 @@ var createMap = function(){
 
         dojo.connect(dijit.byId("map"),"resize",map,map.resize);
 
-        var layers = response.itemInfo.itemData,operationalLayers;
+        //var layers = response.itemInfo.itemData,operationalLayers;
 
-        setSection(section);
+        if(map.loaded){
+            setSection(section);
+        }
+        else{
+            setSection(section);
+        }
 
     });
     mapDeferred.addErrback(function(error) {

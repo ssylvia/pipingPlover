@@ -34,6 +34,7 @@ var setUpTabs = function(){
         //Content Slider
         $("#contentSlider").append("<div class='contentSlide tabSlide "+tab.season+"Slide "+tab.season+"'><div class='photoCredit "+tab.season+"'></div><div class='fader "+tab.season+"'></div><div class='photoCaption "+tab.season+"'></div><table class='titleBar "+tab.season+"'><tbody><tr><td class='prevArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='tabTitle "+tab.season+"title'>"+sectionData[i].title+"</td><td class='nextArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div>"+addStart(i)+"</td></tr></tbody></table><div class='textContent "+tab.season+"'>"+sectionData[i].text+"</div></div>");
     });
+
     $(".tab").eq(section).addClass("selected");
     $(".tab").click(function(){
         setSection($(this).index());
@@ -58,6 +59,31 @@ var setSection = function(sec){
 };
 
 var setLayers = function(sec){
+
+    if($(".contentSlide").length === sectionData.length){
+        dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
+            $(".contentSlide."+grp.attributes.Season.toLowerCase()).last().after("<div class='contentSlide popupSlide "+grp.attributes.Season.toLowerCase()+"Slide "+grp.attributes.Season.toLowerCase()+"'><div class='photoCredit "+grp.attributes.Season.toLowerCase()+"'></div><div class='fader "+grp.attributes.Season.toLowerCase()+"'></div><div class='photoCaption "+grp.attributes.Season.toLowerCase()+"'></div><table class='titleBar "+grp.attributes.Season.toLowerCase()+"'><tbody><tr><td class='prevArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='popupTitle "+grp.attributes.Season.toLowerCase()+"title'>"+grp.attributes.Point_name+"</td><td class='nextArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div></td></tr></tbody></table><div class='textContent "+grp.attributes.Season.toLowerCase()+"'>"+grp.attributes.Description+"</div></div>");
+        });
+
+        $(".popupSlide").hide();
+
+        $(".contentSlide").last().children(".titleBar").children("tbody").children("tr").children(".nextArrowCon").hide()
+
+        $(".nextArrowCon").click(function(){
+            $("#contentSlider").animate({
+                "left" : $("#contentSlider").position().left - 450
+            },"fast");
+        });
+
+        $(".prevArrowCon").click(function(){
+            $("#contentSlider").animate({
+                "left" : $("#contentSlider").position().left + 450
+            },"fast");
+        });
+    }
+
+    resetLayout();
+
     map.getLayer(findLayerName("csv")).show();
     map.getLayer(findLayerName("SpringMigration")).hide();
     map.getLayer(findLayerName("FallMigration")).hide();

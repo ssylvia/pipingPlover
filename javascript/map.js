@@ -44,16 +44,16 @@ var initMap = function(){
     urlObject.query = urlObject.query || {};
 
     if(urlObject.query.season){
-        if(urlObject.query.season === "summer"){
+        if(urlObject.query.season.toLowerCase() === "summer"){
             section = 1;
         }
-        else if(urlObject.query.season === "fall"){
+        else if(urlObject.query.season.toLowerCase() === "fall"){
             section = 2;
         }
-        else if(urlObject.query.season === "winter"){
+        else if(urlObject.query.season.toLowerCase() === "winter"){
             section = 3;
         }
-        else if(urlObject.query.season === "spring"){
+        else if(urlObject.query.season.toLowerCase() === "spring"){
             section = 4;
         }
         else{
@@ -88,6 +88,18 @@ var createMap = function(){
         map = response.map;
 
         dojo.connect(dijit.byId("map"),"resize",map,map.resize);
+
+        dojo.connect(map.getLayer(findLayerName("csv")),"onMouseOver",function(event){
+            map.setCursor("pointer");
+            $("#hoverInfo").html(event.graphic.attributes.Site_title);
+            positionInfo(event.graphic.geometry);
+        });
+
+        dojo.connect(map.getLayer(findLayerName("csv")),"onMouseOut",function(){
+            map.setCursor("default");
+            $("#hoverInfo").hide();
+            $("#hoverInfoArrow").hide();
+        });
 
         //var layers = response.itemInfo.itemData,operationalLayers;
 

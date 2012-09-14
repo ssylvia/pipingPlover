@@ -285,6 +285,30 @@ h1{
     background-color:#90b5df;
 }
 
+#hoverInfo{
+    display:none;
+    position:absolute;
+    background:#848484;
+    max-width:200px;
+    color:#fff;
+    padding:5px;
+    border:1px solid #777;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    z-index:100;
+}
+
+#hoverInfoArrow{
+    display:none;
+    position:absolute;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+	border-right: 8px solid #777;
+    z-index:100
+}
+
 #shadowDiv{
     position:absolute;
     height:100%;
@@ -335,10 +359,6 @@ h1{
 #loadingImg{
 	margin-top:5px;
 	padding-bottom:10px;
-}
-
-g,v{
-	cursor:pointer;
 }
 
 .dijitRuleMark{

@@ -88,6 +88,7 @@ var setLayers = function(sec){
         $(".contentSlide").last().children(".titleBar").children("tbody").children("tr").children(".nextArrowCon").hide();
 
         $(".popup.fader").imageFader({
+            autoPlay : false,
             animationEnd : function(data){
                 var img = data.currentImg.jqueryElement;
                 img.parent("div").parent("div").children(".photoCredit").html("© "+img.attr("credit"));
@@ -207,4 +208,19 @@ var setLayers = function(sec){
         map.setExtent(new esri.geometry.Extent({"xmin":-13762659.286841381,"ymin":652183.1697834609,"xmax":-5641989.401826414,"ymax":8606526.081249928,
   "spatialReference":{"wkid":102100}}));
     }
+};
+
+var positionInfo = function(pt){
+    var scrPt = map.toScreen(pt);
+    console.log(scrPt);
+    $("#hoverInfo").css({
+        top: (scrPt.y - ($("#hoverInfo").height()/2) - 5),
+        left:scrPt.x + 15
+    });
+    $("#hoverInfoArrow").css({
+        top: (scrPt.y - 7),
+        left:scrPt.x + 7
+    });
+    $("#hoverInfo").show();
+    $("#hoverInfoArrow").show();
 };

@@ -80,6 +80,13 @@ var setLayers = function(sec){
             $("#contentSlider").animate({
                 "left" : -$(".currentSlide").position().left
             },"fast");
+            if(current.hasClass("tabSlide")){
+                $(".tabSlide").each(function(i){
+                    if($(this).hasClass("currentSlide")){
+                        setSection(i);
+                    }
+                });
+            }
         });
 
         $(".prevArrowCon").click(function(){
@@ -94,6 +101,13 @@ var setLayers = function(sec){
             $("#contentSlider").animate({
                 "left" : -$(".currentSlide").position().left
             },"fast");
+            if(current.hasClass("tabSlide")){
+                $(".tabSlide").each(function(i){
+                    if($(this).hasClass("currentSlide")){
+                        setSection(i);
+                    }
+                });
+            }
         });
     }
 

@@ -17,7 +17,7 @@ var resetLayout = function(){
     $("#contentSlider").css("width",$("#contentSlider").children(".contentSlide").length * 450);
 
     $(".nextArrow").first().css("border-top","20px solid transparent").css("border-bottom","20px solid transparent").css("border-left","20px solid #fff").css("margin-bottom",5).css("margin-left",($(".nextArrowCon").first().width() - 20)/2);
-    
+
     $(".singlePhoto").each(function(){
         $(this).css("margin-left",($(this).parent(".fader").width() - $(this).width())/2).css("margin-top",($(this).parent(".fader").height() - $(this).height())/2);
     });
@@ -63,14 +63,28 @@ var setSection = function(sec){
 
 };
 
+var getPhotoTags = function (attr) {
+    if (attr.Photo_2_URL !== null && attr.Photo_3_URL !== null){
+        return "<img src='images/photos/"+unescape(attr.Photo_1_URL)+".jpg' credit='"+attr.Photo_1_credit+"' caption='"+attr.Photo_1_caption+"' alt=''><img src='images/photos/"+unescape(attr.Photo_2_URL)+".jpg' credit='"+attr.Photo_2_credit+"' caption='"+attr.Photo_2_caption+"' alt=''><img src='images/photos/"+unescape(attr.Photo_3_URL)+".jpg' credit='"+attr.Photo_3_credit+"' caption='"+attr.Photo_3_caption+"' alt=''>";
+    }
+    else if (attr.Photo_2_URL !== null){
+        return "<img src='images/photos/"+unescape(attr.Photo_1_URL)+".jpg' credit='"+attr.Photo_1_credit+"' caption='"+attr.Photo_1_caption+"' alt=''><img src='images/photos/"+unescape(attr.Photo_2_URL)+".jpg' credit='"+attr.Photo_2_credit+"' caption='"+attr.Photo_2_caption+"' alt=''>";
+    }
+    else{
+        return "<img src='images/photos/"+unescape(attr.Photo_1_URL)+".jpg' credit='"+attr.Photo_1_credit+"' caption='"+attr.Photo_1_caption+"' alt=''>";
+    }
+};
+
 var setLayers = function(sec){
 
     if($(".contentSlide").length === sectionData.length){
         dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
-            $(".contentSlide."+grp.attributes.Season.toLowerCase()).last().after("<div class='contentSlide popupSlide "+grp.attributes.Season.toLowerCase()+"Slide "+grp.attributes.Season.toLowerCase()+"'><div class='photoCredit "+grp.attributes.Season.toLowerCase()+"'></div><div class='fader "+grp.attributes.Season.toLowerCase()+"'></div><div class='photoCaption "+grp.attributes.Season.toLowerCase()+"'></div><table class='titleBar "+grp.attributes.Season.toLowerCase()+"'><tbody><tr><td class='prevArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='popupTitle "+grp.attributes.Season.toLowerCase()+"title'>"+grp.attributes.Point_name+"</td><td class='nextArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div></td></tr></tbody></table><div class='textContent "+grp.attributes.Season.toLowerCase()+"'>"+grp.attributes.Description+"</div></div>");
+            $(".contentSlide."+grp.attributes.Season.toLowerCase()).last().after("<div class='contentSlide popupSlide "+grp.attributes.Season.toLowerCase()+"Slide "+grp.attributes.Season.toLowerCase()+"'><div class='photoCredit "+grp.attributes.Season.toLowerCase()+"'></div><div class='popup fader "+grp.attributes.Season.toLowerCase()+"'>"+getPhotoTags(grp.attributes)+"</div><div class='photoCaption "+grp.attributes.Season.toLowerCase()+"'></div><table class='titleBar "+grp.attributes.Season.toLowerCase()+"'><tbody><tr><td class='prevArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='popupTitle "+grp.attributes.Season.toLowerCase()+"title'>"+grp.attributes.Point_name+"</td><td class='nextArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div></td></tr></tbody></table><div class='textContent "+grp.attributes.Season.toLowerCase()+"'>"+grp.attributes.Description+"</div></div>");
         });
 
         $(".contentSlide").last().children(".titleBar").children("tbody").children("tr").children(".nextArrowCon").hide();
+
+        $(".popup.fader").imageFader();
 
         $(".nextArrowCon").click(function(){
             var current = undefined;

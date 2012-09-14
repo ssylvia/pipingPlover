@@ -80,7 +80,8 @@ var createMap = function(){
             nav : false,
             wrapAround180 : true,
             infoWindow : popup
-        }
+        },
+        ignorePopups:true
     });
 
     mapDeferred.addCallback(function(response){

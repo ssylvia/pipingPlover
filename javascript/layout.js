@@ -36,7 +36,7 @@ var setUpTabs = function(){
     dojo.forEach(configOptions.tabTitles,function(tab,i){
         $("#tabArea").append("<div id='tab"+i+"' class='tab'><p id='tabText"+i+"' class='tabText'>"+tab.title+"</p></div>");
         //Content Slider
-        $("#contentSlider").append("<div class='contentSlide tabSlide "+tab.season+"Slide "+tab.season+"'><div class='tabPhoto photoCredit "+tab.season+"' style='color:#fff;'>"+sectionData[i].images[0].copyright+"</div><div class='tabPhoto fader "+tab.season+"'><img class='tabPhoto singlePhoto' src='"+sectionData[i].images[0].src+"' alt=''></div><div class='tabPhoto photoCaption "+tab.season+"'></div><table class='titleBar "+tab.season+"'><tbody><tr><td class='prevArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='tabTitle "+tab.season+"title'>"+sectionData[i].title+"</td><td class='nextArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div>"+addStart(i)+"</td></tr></tbody></table><div class='textContent "+tab.season+"'>"+sectionData[i].text+"</div></div>");
+        $("#contentSlider").append("<div class='contentSlide tabSlide "+tab.season+"Slide "+tab.season+"' season='"+i+"'><div class='tabPhoto photoCredit "+tab.season+"' style='color:#fff;'>"+sectionData[i].images[0].copyright+"</div><div class='tabPhoto fader "+tab.season+"'><img class='tabPhoto singlePhoto' src='"+sectionData[i].images[0].src+"' alt=''></div><div class='tabPhoto photoCaption "+tab.season+"'></div><table class='titleBar "+tab.season+"'><tbody><tr><td class='prevArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='tabTitle "+tab.season+"title'>"+sectionData[i].title+"</td><td class='nextArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div>"+addStart(i)+"</td></tr></tbody></table><div class='textContent "+tab.season+"'>"+sectionData[i].text+"</div></div>");
     });
 
     $(".tab").eq(section).addClass("selected");
@@ -77,9 +77,12 @@ var getPhotoTags = function (attr) {
 
 var setLayers = function(sec){
 
+    popup.hide();
+    section = sec;
+
     if($(".contentSlide").length === sectionData.length){
         dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
-            $(".contentSlide."+grp.attributes.Season.toLowerCase()).last().after("<div class='contentSlide popupSlide "+grp.attributes.Season.toLowerCase()+"Slide "+grp.attributes.Season.toLowerCase()+"'><div class='photoCredit "+grp.attributes.Season.toLowerCase()+"'></div><div class='popup fader "+grp.attributes.Season.toLowerCase()+"'>"+getPhotoTags(grp.attributes)+"</div><div class='photoCaption "+grp.attributes.Season.toLowerCase()+"'></div><table class='titleBar "+grp.attributes.Season.toLowerCase()+"'><tbody><tr><td class='prevArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='popupTitle "+grp.attributes.Season.toLowerCase()+"title'>"+grp.attributes.Point_name+"</td><td class='nextArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div></td></tr></tbody></table><div class='textContent "+grp.attributes.Season.toLowerCase()+"'>"+grp.attributes.Description+"</div></div>");
+            $(".contentSlide."+grp.attributes.Season.toLowerCase()).last().after("<div class='contentSlide popupSlide "+grp.attributes.Season.toLowerCase()+"Slide "+grp.attributes.Season.toLowerCase()+"' season='"+grp.attributes.Season_Number+"'><div class='photoCredit "+grp.attributes.Season.toLowerCase()+"'></div><div class='popup fader "+grp.attributes.Season.toLowerCase()+"'>"+getPhotoTags(grp.attributes)+"</div><div class='photoCaption "+grp.attributes.Season.toLowerCase()+"'></div><table class='titleBar "+grp.attributes.Season.toLowerCase()+"'><tbody><tr><td class='prevArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='popupTitle "+grp.attributes.Season.toLowerCase()+"title'>"+grp.attributes.Point_name+"</td><td class='nextArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div></td></tr></tbody></table><div class='textContent "+grp.attributes.Season.toLowerCase()+"'>"+grp.attributes.Description+"</div></div>");
         });
 
         $(".contentSlide").last().children(".titleBar").children("tbody").children("tr").children(".nextArrowCon").hide();
@@ -92,19 +95,15 @@ var setLayers = function(sec){
                 if($(this).hasClass("currentSlide")){
                     $(this).removeClass("currentSlide");
                     current = $(this).next();
+                    if($(this).attr("season") !== current.attr("season")){
+                        setLayers(parseFloat(current.attr("season")));
+                    }
                 }
             });
             current.addClass("currentSlide");
             $("#contentSlider").animate({
                 "left" : -$(".currentSlide").position().left
             },"fast");
-            if(current.hasClass("tabSlide")){
-                $(".tabSlide").each(function(i){
-                    if($(this).hasClass("currentSlide")){
-                        setSection(i);
-                    }
-                });
-            }
         });
 
         $(".prevArrowCon").click(function(){
@@ -113,19 +112,15 @@ var setLayers = function(sec){
                 if($(this).hasClass("currentSlide")){
                     $(this).removeClass("currentSlide");
                     current = $(this).prev();
+                    if($(this).attr("season") !== current.attr("season")){
+                        setLayers(parseFloat(current.attr("season")));
+                    }
                 }
             });
             current.addClass("currentSlide");
             $("#contentSlider").animate({
                 "left" : -$(".currentSlide").position().left
             },"fast");
-            if(current.hasClass("tabSlide")){
-                $(".tabSlide").each(function(i){
-                    if($(this).hasClass("currentSlide")){
-                        setSection(i);
-                    }
-                });
-            }
         });
     }
 

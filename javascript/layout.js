@@ -87,7 +87,15 @@ var setLayers = function(sec){
 
         $(".contentSlide").last().children(".titleBar").children("tbody").children("tr").children(".nextArrowCon").hide();
 
-        $(".popup.fader").imageFader();
+        $(".popup.fader").imageFader({
+            animationEnd : function(data){
+                var img = data.currentImg.jqueryElement;
+                img.parent("div").parent("div").children(".photoCredit").html("© "+img.attr("credit"));
+                img.parent("div").parent("div").children(".photoCaption").html(img.attr("caption"));
+
+                resetLayout();
+            }
+        });
 
         $(".nextArrowCon").click(function(){
             var current = undefined;

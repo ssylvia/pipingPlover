@@ -17,6 +17,10 @@ var resetLayout = function(){
     $("#contentSlider").css("width",$("#contentSlider").children(".contentSlide").length * 450);
 
     $(".nextArrow").first().css("border-top","20px solid transparent").css("border-bottom","20px solid transparent").css("border-left","20px solid #fff").css("margin-bottom",5).css("margin-left",($(".nextArrowCon").first().width() - 20)/2);
+    
+    $(".singlePhoto").each(function(){
+        $(this).css("margin-left",($(this).parent(".fader").width() - $(this).width())/2).css("margin-top",($(this).parent(".fader").height() - $(this).height())/2);
+    });
 };
 
 var addStart = function(i){
@@ -32,7 +36,7 @@ var setUpTabs = function(){
     dojo.forEach(configOptions.tabTitles,function(tab,i){
         $("#tabArea").append("<div id='tab"+i+"' class='tab'><p id='tabText"+i+"' class='tabText'>"+tab.title+"</p></div>");
         //Content Slider
-        $("#contentSlider").append("<div class='contentSlide tabSlide "+tab.season+"Slide "+tab.season+"'><div class='photoCredit "+tab.season+"'></div><div class='fader "+tab.season+"'></div><div class='photoCaption "+tab.season+"'></div><table class='titleBar "+tab.season+"'><tbody><tr><td class='prevArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='tabTitle "+tab.season+"title'>"+sectionData[i].title+"</td><td class='nextArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div>"+addStart(i)+"</td></tr></tbody></table><div class='textContent "+tab.season+"'>"+sectionData[i].text+"</div></div>");
+        $("#contentSlider").append("<div class='contentSlide tabSlide "+tab.season+"Slide "+tab.season+"'><div class='tabPhoto photoCredit "+tab.season+"' style='color:#fff;'>"+sectionData[i].images[0].copyright+"</div><div class='tabPhoto fader "+tab.season+"'><img class='tabPhoto singlePhoto' src='"+sectionData[i].images[0].src+"' alt=''></div><div class='tabPhoto photoCaption "+tab.season+"'></div><table class='titleBar "+tab.season+"'><tbody><tr><td class='prevArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='tabTitle "+tab.season+"title'>"+sectionData[i].title+"</td><td class='nextArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div>"+addStart(i)+"</td></tr></tbody></table><div class='textContent "+tab.season+"'>"+sectionData[i].text+"</div></div>");
     });
 
     $(".tab").eq(section).addClass("selected");

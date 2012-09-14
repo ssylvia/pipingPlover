@@ -65,13 +65,13 @@ var setSection = function(sec){
 
 var getPhotoTags = function (attr) {
     if (attr.Photo_2_URL !== null && attr.Photo_3_URL !== null){
-        return "<img src='images/photos/"+unescape(attr.Photo_1_URL)+".jpg' credit='"+attr.Photo_1_credit+"' caption='"+attr.Photo_1_caption+"' alt=''><img src='images/photos/"+unescape(attr.Photo_2_URL)+".jpg' credit='"+attr.Photo_2_credit+"' caption='"+attr.Photo_2_caption+"' alt=''><img src='images/photos/"+unescape(attr.Photo_3_URL)+".jpg' credit='"+attr.Photo_3_credit+"' caption='"+attr.Photo_3_caption+"' alt=''>";
+        return "<img src='images/photos/"+attr.Photo_1_URL+".jpg' credit='"+attr.Photo_1_credit+"' caption='"+attr.Photo_1_caption+"' alt=''><img src='images/photos/"+attr.Photo_2_URL+".jpg' credit='"+attr.Photo_2_credit+"' caption='"+attr.Photo_2_caption+"' alt=''><img src='images/photos/"+attr.Photo_3_URL+".jpg' credit='"+attr.Photo_3_credit+"' caption='"+attr.Photo_3_caption+"' alt=''>";
     }
     else if (attr.Photo_2_URL !== null){
-        return "<img src='images/photos/"+unescape(attr.Photo_1_URL)+".jpg' credit='"+attr.Photo_1_credit+"' caption='"+attr.Photo_1_caption+"' alt=''><img src='images/photos/"+unescape(attr.Photo_2_URL)+".jpg' credit='"+attr.Photo_2_credit+"' caption='"+attr.Photo_2_caption+"' alt=''>";
+        return "<img src='images/photos/"+attr.Photo_1_URL+".jpg' credit='"+attr.Photo_1_credit+"' caption='"+attr.Photo_1_caption+"' alt=''><img src='images/photos/"+attr.Photo_2_URL+".jpg' credit='"+attr.Photo_2_credit+"' caption='"+attr.Photo_2_caption+"' alt=''>";
     }
     else{
-        return "<img src='images/photos/"+unescape(attr.Photo_1_URL)+".jpg' credit='"+attr.Photo_1_credit+"' caption='"+attr.Photo_1_caption+"' alt=''>";
+        return "<img src='images/photos/"+attr.Photo_1_URL+".jpg' credit='"+attr.Photo_1_credit+"' caption='"+attr.Photo_1_caption+"' alt=''>";
     }
 };
 

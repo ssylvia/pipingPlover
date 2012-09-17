@@ -92,13 +92,26 @@ var createMap = function(){
         dojo.connect(map.getLayer(findLayerName("csv")),"onMouseOver",function(event){
             map.setCursor("pointer");
             $("#hoverInfo").html(event.graphic.attributes.Site_title);
-            positionInfo(event.graphic.geometry);
+            positionInfo(event.graphic.geometry,$("#hoverInfo"),$("#hoverInfoArrow"));
         });
 
         dojo.connect(map.getLayer(findLayerName("csv")),"onMouseOut",function(){
             map.setCursor("default");
-            $("#hoverInfo").hide();
-            $("#hoverInfoArrow").hide();
+            hideInfo($("#hoverInfo"),$("#hoverInfoArrow"));
+        });
+
+        dojo.connect(map,"onPanStart",function(){
+            hideInfo($("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));
+        });
+
+        dojo.connect(map,"onExtentChange",function(){
+            var title = $(".currentSlide").children(".titleBar").children("tbody").children("tr").children(".popupTitle").html();
+            dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
+                if (grp.attributes.Point_name === title){
+                    $("#hoverInfoSlide").html(grp.attributes.Site_title);
+                    positionInfo(grp.geometry,$("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));
+                }
+            });
         });
 
         //var layers = response.itemInfo.itemData,operationalLayers;

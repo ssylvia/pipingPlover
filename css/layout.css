@@ -115,12 +115,12 @@ h1{
 	text-overflow: ellipsis;
     -o-text-overflow:ellipsis;
 	overflow:hidden;
-	padding:0px 5px 0px 7px;
+	padding:5px 5px 0px 7px;
     font-weight:bold;
 }
 
 .tabTextBig{
-    font-size:35px;
+    font-size:24px;
     opacity:0.7;
     filter: alpha(opacity=70);
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
@@ -283,9 +283,24 @@ h1{
 }
 
 .popupTitle{
-    background-color:#ccc;
     font-size:22px;
     color#000;
+}
+
+.popupTitle.summertitle{
+    background-color:#caa9a2;
+}
+
+.popupTitle.falltitle{
+    background-color:#c5b39b;
+}
+
+.popupTitle.wintertitle{
+    background-color:#a8b7bc;
+}
+
+.popupTitle.springtitle{
+    background-color:#b6bfae;
 }
 
 #mapPane{
@@ -312,7 +327,31 @@ h1{
     height: 0;
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
-	border-right: 8px solid #777;
+    border-right: 8px solid #777;
+    z-index:100
+}
+
+#hoverInfoSlide{
+    display:none;
+    position:absolute;
+    background:#848484;
+    max-width:200px;
+    color:#fff;
+    padding:5px;
+    border:1px solid #777;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    z-index:100;
+}
+
+#hoverInfoArrowSlide{
+    display:none;
+    position:absolute;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #777;
     z-index:100
 }
 

@@ -51,7 +51,7 @@ var setUpTabs = function(){
 
 var setSection = function(sec){
 
-    popup.hide();
+    hideInfo($("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));
     section = sec;
 
     $(".contentSlide").removeClass("currentSlide");
@@ -100,15 +100,16 @@ var setLayers = function(sec){
         });
 
         $(".nextArrowCon").click(function(){
+            hideInfo($("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));
             var current = undefined;
             $(".contentSlide").each(function(i){
                 if($(this).hasClass("currentSlide")){
                     $(this).removeClass("currentSlide");
                     current = $(this).next();
-                    if($(this).attr("season") !== current.attr("season") && current.hasClass("tabSlide")){
+                    if($(this).attr("season") !== current.attr("season") || current.hasClass("tabSlide")){
                         setLayers(parseFloat(current.attr("season")));
                     }
-                    else{
+                    if(current.hasClass("popupSlide")){
                         var title = current.children(".titleBar").children("tbody").children("tr").children(".popupTitle").html();
                         dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
                             if (grp.attributes.Point_name === title){
@@ -125,15 +126,16 @@ var setLayers = function(sec){
         });
 
         $(".prevArrowCon").click(function(){
+            hideInfo($("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));
             var current = undefined;
             $(".contentSlide").each(function(i){
                 if($(this).hasClass("currentSlide")){
                     $(this).removeClass("currentSlide");
                     current = $(this).prev();
-                    if($(this).attr("season") !== current.attr("season") && current.hasClass("tabSlide")){
+                    if($(this).attr("season") !== current.attr("season") || current.hasClass("tabSlide")){
                         setLayers(parseFloat(current.attr("season")));
                     }
-                    else{
+                    if(current.hasClass("popupSlide")){
                         var title = current.children(".titleBar").children("tbody").children("tr").children(".popupTitle").html();
                         dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
                             if (grp.attributes.Point_name === title){
@@ -227,17 +229,21 @@ var setLayers = function(sec){
     }
 };
 
-var positionInfo = function(pt){
+var positionInfo = function(pt,element,arrow){
     var scrPt = map.toScreen(pt);
-    console.log(scrPt);
-    $("#hoverInfo").css({
-        top: (scrPt.y - ($("#hoverInfo").height()/2) - 5),
+    element.css({
+        top: (scrPt.y - (element.height()/2) - 5),
         left:scrPt.x + 21
     });
-    $("#hoverInfoArrow").css({
+    arrow.css({
         top: (scrPt.y - 7),
         left:scrPt.x + 13
     });
-    $("#hoverInfo").show();
-    $("#hoverInfoArrow").show();
+    element.show();
+    arrow.show();
+};
+
+var hideInfo = function(element, arrow){
+    element.hide();
+    arrow.hide();
 };

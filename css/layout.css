@@ -1,4 +1,4 @@
-html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input,hr {margin:0; padding:0;}
+html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input,hr {margin:0; padding:0;font-family:Arial, Helvetica, sans-serif;}
 html,body{height:100%;width:100%;overflow:hidden; font-family:Georgia, "Times New Roman", Times, serif;}
 h1,h2,h3,h4,h5,h6,pre,code,address,caption,cite,code,em,th {font-weight:normal; font-style:normal; font-family:Arial, Helvetica, sans-serif; color:#fff;}
 ul,ol {list-style:none;}
@@ -150,7 +150,7 @@ h1{
 }
 
 .summerSlide{
-    background-color:#fcd0c5;
+    background-color:#fddfd8;
 }
 
 .fallSlide{
@@ -165,11 +165,9 @@ h1{
     background-color:#e2ecd5;
 }
 
-.photoCredit{
+.photoMargin{
     background:#000;
-    padding:15px 10px 5px 30px;
-    color#fff;
-    font-size:10px;
+    padding:5px;
 }
 
 .fader{
@@ -179,13 +177,22 @@ h1{
 }
 
 .singlePhoto{
+    display:none;
     max-height:100%;
     max-width:100%;
 }
 
+.photoCredit{
+    background:#000;
+    text-align:right;
+    padding:15px 5px 5px 15px;
+    color#dadada;
+    font-size:10px;
+}
+
 .photoCaption{
     background:#000;
-    padding:15px;
+    padding:0 15px 10px 15px;
     color#fff;
     font-size:12px;
     font-style:italic;

@@ -100,6 +100,19 @@ var createMap = function(){
             hideInfo($("#hoverInfo"),$("#hoverInfoArrow"));
         });
 
+        dojo.connect(map.getLayer(findLayerName("csv")),"onClick",function(){
+            $(".contentSlide").each(function(){
+                if($(this).children(".titleBar").children("tbody").children("tr").children(".popupTitle").html() === event.graphic.attributes.Point_name){
+                    $(".contentSlide").removeClass("currentSlide");
+                    $(this).addClass("currentSlide");
+                    $("#contentSlider").animate({
+                        "left" : -$(".currentSlide").position().left
+                    },"fast");
+                    map.centerAndZoom(event.graphic.geometry,7);
+                }
+            });
+        });
+
         dojo.connect(map,"onPanStart",function(){
             hideInfo($("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));
         });

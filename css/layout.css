@@ -88,10 +88,14 @@ h1{
 #slider{
     position:absolute;
     top:0;
-    height:34px;
+    z-index:100;
+}
+
+#sliderMid{
+    position:absolute;
+    height:32px;
     width:100px;
     border:3px solid #000;
-    z-index:100;
 }
 
 .tab{

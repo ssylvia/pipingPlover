@@ -7,6 +7,38 @@ $(document).ready(function(){
     $("#slider").draggable({
     	axis : "x",
 		containment : "#tabArea",
+        stop: function(){
+            if ($("#slider").position().left <= $(".tab").first().width()/2){
+                $("#slider").animate({
+                    "left" : $(".tab").eq(0).position().left
+                },100);
+                setSection(0);
+            }
+            else if ($("#slider").position().left <= $(".tab").first().width()+($(".tab").first().width()/2)){
+                $("#slider").animate({
+                    "left" : $(".tab").eq(1).position().left
+                },100);
+                setSection(1);
+            }
+            else if ($("#slider").position().left <= ($(".tab").first().width()*2)+($(".tab").first().width()/2)){
+                $("#slider").animate({
+                    "left" : $(".tab").eq(2).position().left
+                },100);
+                setSection(2);
+            }
+            else if ($("#slider").position().left <= ($(".tab").first().width()*3)+($(".tab").first().width()/2)){
+                $("#slider").animate({
+                    "left" : $(".tab").eq(3).position().left
+                },100);
+                setSection(3);
+            }
+            else{
+                $("#slider").animate({
+                    "left" : $(".tab").eq(4).position().left
+                },100);
+                setSection(4);
+            }
+        }
     });
 });
 
@@ -38,6 +70,11 @@ var changeSidePanel = function(){
     $("#contentSlider").animate({
         "left" : -$(".currentSlide").position().left
     },0);
+
+    $("#sliderMid").css({
+        "left" : $(".tab").eq(parseFloat($(".currentSlide").attr("season"))).position().left
+    });
+
 };
 
 var resetLayout = function(){
@@ -52,7 +89,7 @@ var resetLayout = function(){
         }
     });
 
-    $("#slider").css("width",$("#tabText0").width()+6);
+    $("#sliderMid").css("width",$("#tabText0").width()+6);
 
     $("#contentSlider").css("width",$("#contentSlider").children(".contentSlide").length * getWidth());
 

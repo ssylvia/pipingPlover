@@ -107,7 +107,6 @@ var setLayers = function(sec){
                 resetLayout();
             }
         });
-        $(".popup.fader").imageFader("pause");
 
         $(".nextArrowCon").click(function(){
             hideInfo($("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));

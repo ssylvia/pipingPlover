@@ -277,16 +277,32 @@ var setLayers = function(sec){
 
 var positionInfo = function(pt,element,arrow){
     var scrPt = map.toScreen(pt);
-    element.css({
-        top: (scrPt.y - (element.height()/2) - 5),
-        left:scrPt.x + 27
-    });
-    arrow.css({
-        top: (scrPt.y - 7),
-        left:scrPt.x + 19
-    });
     element.show();
-    arrow.show();
+    arrow.show()
+    if(scrPt.x < $("#mapPane").width()/2 + 100){
+        element.css({
+            top: (scrPt.y - (element.height()/2) - 5),
+            left:scrPt.x + 27
+        });
+        arrow.css({
+            top: (scrPt.y - 7),
+            left:scrPt.x + 19,
+            "border-right": "8px solid #777",
+            "border-left": "none"
+        });
+    }
+    else{
+        element.css({
+            top: (scrPt.y - (element.height()/2) - 5),
+            left:scrPt.x - 37 - element.width()
+        });
+        arrow.css({
+            top: (scrPt.y - 7),
+            left:scrPt.x - 25,
+            "border-left": "8px solid #777",
+            "border-right": "none"
+        });
+    };
 };
 
 var hideInfo = function(element, arrow){

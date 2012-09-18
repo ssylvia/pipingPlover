@@ -92,7 +92,7 @@ var setLayers = function(sec){
 
     if($(".contentSlide").length === sectionData.length){
         dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
-            $(".contentSlide."+grp.attributes.Season.toLowerCase()).last().after("<div class='contentSlide popupSlide "+grp.attributes.Season.toLowerCase()+"Slide "+grp.attributes.Season.toLowerCase()+"' season='"+grp.attributes.Season_Number+"'><div class='photoMargin'></div><div class='popup fader "+grp.attributes.Season.toLowerCase()+"'>"+getPhotoTags(grp.attributes)+"</div><div class='photoCredit "+grp.attributes.Season.toLowerCase()+"' style='color:#ccc;'>"+grp.attributes.Photo_1_credit+"</div><div class='photoCaption "+grp.attributes.Season.toLowerCase()+"' style='color:#fff;'>"+grp.attributes.Photo_1_caption+"</div><table class='titleBar "+grp.attributes.Season.toLowerCase()+"'><tbody><tr><td class='prevArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='popupTitle "+grp.attributes.Season.toLowerCase()+"title'>"+grp.attributes.Point_name+"</td><td class='nextArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div></td></tr></tbody></table><div class='textContent "+grp.attributes.Season.toLowerCase()+"'>"+grp.attributes.Description+"</div></div>");
+            $(".contentSlide."+grp.attributes.Season.toLowerCase()).last().after("<div class='contentSlide popupSlide "+grp.attributes.Season.toLowerCase()+"Slide "+grp.attributes.Season.toLowerCase()+"' season='"+grp.attributes.Season_Number+"'><div class='photoMargin'></div><div class='popup fader "+grp.attributes.Season.toLowerCase()+"'>"+getPhotoTags(grp.attributes)+"</div><div class='photoCredit "+grp.attributes.Season.toLowerCase()+"' style='color:#ccc;'>"+grp.attributes.Photo_1_credit+"</div><div class='photoCaption "+grp.attributes.Season.toLowerCase()+"' style='color:#fff;'>"+grp.attributes.Photo_1_caption+"</div><table class='titleBar "+grp.attributes.Season.toLowerCase()+"'><tbody><tr><td class='prevArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='popupTitle "+grp.attributes.Season.toLowerCase()+"title'>"+grp.attributes.Point_name+"</td><td class='nextArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div></td></tr></tbody></table><div class='textContent "+grp.attributes.Season.toLowerCase()+"'><strong>"+grp.attributes.Site_title+"</strong><br>"+grp.attributes.Description+"</div></div>");
         });
 
         $(".contentSlide").last().children(".titleBar").children("tbody").children("tr").children(".nextArrowCon").hide();
@@ -159,6 +159,10 @@ var setLayers = function(sec){
                 "left" : -$(".currentSlide").position().left
             },"fast");
         });
+
+        setTimeout(function() {
+            setSection(sec);
+        }, 10);
     }
 
     resetLayout();

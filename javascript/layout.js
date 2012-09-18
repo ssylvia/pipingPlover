@@ -242,11 +242,11 @@ var positionInfo = function(pt,element,arrow){
     var scrPt = map.toScreen(pt);
     element.css({
         top: (scrPt.y - (element.height()/2) - 5),
-        left:scrPt.x + 21
+        left:scrPt.x + 27
     });
     arrow.css({
         top: (scrPt.y - 7),
-        left:scrPt.x + 13
+        left:scrPt.x + 19
     });
     element.show();
     arrow.show();

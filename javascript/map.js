@@ -115,6 +115,12 @@ var createMap = function(){
 
         dojo.connect(map,"onPanStart",function(){
             hideInfo($("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));
+            hideInfo($("#hoverInfo"),$("#hoverInfoArrow"));
+        });
+
+        dojo.connect(map,"onZoomStart",function(){
+            hideInfo($("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));
+            hideInfo($("#hoverInfo"),$("#hoverInfoArrow"));
         });
 
         dojo.connect(map,"onExtentChange",function(){

@@ -141,9 +141,13 @@ var createMap = function(){
 
         if(map.loaded){
             setSection(section);
+            changeSidePanel();
         }
         else{
-            setSection(section);
+            dojo.connect(map,"onLoad",function(){
+                setSection(section);
+                changeSidePanel();
+            });
         }
 
     });

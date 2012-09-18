@@ -1,6 +1,36 @@
 $(window).resize(function(){
     resetLayout();
+    changeSidePanel();
 });
+
+var getWidth = function(){
+    if ($(document).width() <= 1024){
+        return 350;
+    }
+    else{
+        return 450;
+    }
+};
+
+var changeSidePanel = function(){
+    $("#leftPane").css("width",getWidth());
+    $(".contentSlide").css("width",getWidth());
+    if(getWidth() === 350){
+        $(".fader").css("height",200);
+        $(".tabTitle").css("font-size",16);
+        $(".popupTitle").css("font-size",16);
+        $(".textContent").css("font-size",13);
+    }
+    else{
+        $(".fader").css("height",310);
+        $(".popupTitle").css("font-size",24);
+        $(".textContent").css("font-size",15);
+    }
+    dijit.byId("mainWindow").layout();
+    $("#contentSlider").animate({
+        "left" : -$(".currentSlide").position().left
+    },0);
+};
 
 var resetLayout = function(){
     var lastWidth = 0;
@@ -14,7 +44,7 @@ var resetLayout = function(){
         }
     });
 
-    $("#contentSlider").css("width",$("#contentSlider").children(".contentSlide").length * 450);
+    $("#contentSlider").css("width",$("#contentSlider").children(".contentSlide").length * getWidth());
 
     $(".nextArrow").first().css("border-top","20px solid transparent").css("border-bottom","20px solid transparent").css("border-left","20px solid #fff").css("margin-bottom",5).css("margin-left",($(".nextArrowCon").first().width() - 20)/2);
 
@@ -29,6 +59,9 @@ var resetLayout = function(){
                 $(this).show();
             });
         }
+    });
+    $(".contentSlide").each(function(){
+        $(this).children(".textContent").css("height",$("#leftPane").height() - $(this).children(".fader").height() - $(this).children(".photoMargin").height() - $(this).children(".photoCredit").height() - $(this).children(".photoCaption").height() - $(this).children(".titleBar").height()-60);
     });
 };
 
@@ -67,7 +100,7 @@ var setSection = function(sec){
     $(".tabSlide").eq(sec).addClass("currentSlide");
     $("#contentSlider").animate({
         "left" : -$(".currentSlide").position().left
-    },"fast");
+    },0);
 
     setLayers(sec);
 

@@ -185,7 +185,7 @@ h1{
 .photoCredit{
     background:#000;
     text-align:right;
-    padding:15px 5px 5px 15px;
+    padding:5px 5px 5px 15px;
     color#dadada;
     font-size:10px;
 }
@@ -232,6 +232,7 @@ h1{
 .textContent{
     padding:15px 25px 15px 25px;
     color:#000;
+    overflow:auto;
 }
 
 .prevArrow{

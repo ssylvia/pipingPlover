@@ -5,7 +5,7 @@ function init(){
     configOptions = {
         webmap : "015f54544e0a49328adbdfe8dec58464",
         title : "Beating the Odds: A Year in the Life of a Piping Plover",
-        subtitle : "Piping Plovers flock to the same shores that attract people. With just 8,000 adult birds left in the world, the Piping Plover is one of our most at-risk species. From Canada to the Caribbean, Audubon is working to safeguard sandy reaches critical to the birds’ survival, and is spreading the message to share the beach.",
+        subtitle : "Piping Plovers flock to the same shores that attract people. With just over 8,000 adult birds left in the world, the Piping Plover is one of our most at-risk species. From Canada to the Caribbean, Audubon is working to safeguard sandy reaches critical to the birds’ survival, and is spreading the message to share the beach.",
         tabTitles : [{
     		"title" : "<span class='tabTextBig'>Intro</span>",
             "season" : "intro"

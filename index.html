@@ -6,6 +6,7 @@
         <title>Beating the Odds: A Year in the Life of a Piping Plover</title>
         <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.1/js/esri/dijit/css/Popup.css">
         <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.1/js/dojo/dijit/themes/tundra/tundra.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.8.20.custom.css"/>
         <link rel="stylesheet" href="css/fontello.css">
         <!--[if IE 7]><link rel="stylesheet" href="css/fontello-ie7.css"><![endif]-->
         <link rel="stylesheet" type="text/css" href="css/layout.css"/>
@@ -17,7 +18,13 @@
             };
         </script>
         <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=3.1compact"></script>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="javascript/jquery.ui.core.min.js"></script>
+        <script type="text/javascript" src="javascript/jquery.ui.widget.min.js"></script>
+        <script type="text/javascript" src="javascript/jquery.ui.button.min.js"></script>
+        <script type="text/javascript" src="javascript/jquery.ui.mouse.min.js"></script>
+        <script type="text/javascript" src="javascript/jquery.ui.draggable.min.js"></script>
+        <script type="text/javascript" src="javascript/jquery.ui.touch-punch.min.js"></script>
         <script type="text/javascript" src="javascript/imageFader.min.js"></script>
         <script type="text/javascript" src="javascript/config.js"></script>
         <script type="text/javascript" src="javascript/map.js"></script>
@@ -69,6 +76,7 @@
                 </div><!--/leftPane-->
 
                 <div id="mapPane" dojotype="dijit.layout.BorderContainer" gutters="false" region="center">
+                <div id="slider"></div>
                     <div id="tabArea" dojotype="dijit.layout.ContentPane" region="top">
                     </div><!--/tabArea-->
                     <div id="map" dojotype="dijit.layout.ContentPane" region="center">

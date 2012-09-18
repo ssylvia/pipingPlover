@@ -23,6 +23,7 @@ var changeSidePanel = function(){
     }
     else{
         $(".fader").css("height",310);
+        $(".tabTitle").css("font-size",24);
         $(".popupTitle").css("font-size",24);
         $(".textContent").css("font-size",15);
     }
@@ -43,6 +44,8 @@ var resetLayout = function(){
             $(this).css("width",$("#mapPane").width() - lastWidth - 1);
         }
     });
+    
+    $("#slider").css("width",$("#tabText0").width()+6);
 
     $("#contentSlider").css("width",$("#contentSlider").children(".contentSlide").length * getWidth());
 

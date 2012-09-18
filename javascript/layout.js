@@ -3,6 +3,13 @@ $(window).resize(function(){
     changeSidePanel();
 });
 
+$(document).ready(function(){
+    $("#slider").draggable({
+    	axis : "x",
+		containment : "#tabArea",
+    });
+});
+
 var getWidth = function(){
     if ($(document).width() <= 1024){
         return 350;
@@ -44,7 +51,7 @@ var resetLayout = function(){
             $(this).css("width",$("#mapPane").width() - lastWidth - 1);
         }
     });
-    
+
     $("#slider").css("width",$("#tabText0").width()+6);
 
     $("#contentSlider").css("width",$("#contentSlider").children(".contentSlide").length * getWidth());
@@ -105,6 +112,10 @@ var setSection = function(sec){
         "left" : -$(".currentSlide").position().left
     },0);
 
+    $("#slider").animate({
+        "left" : $(".tab").eq(sec).position().left
+    },200);
+
     setLayers(sec);
 
 };
@@ -153,6 +164,9 @@ var setLayers = function(sec){
                     current = $(this).next();
                     if($(this).attr("season") !== current.attr("season") || current.hasClass("tabSlide")){
                         setLayers(parseFloat(current.attr("season")));
+                        $("#slider").animate({
+                            "left" : $(".tab").eq(parseFloat(current.attr("season"))).position().left
+                        },200);
                     }
                     if(current.hasClass("popupSlide")){
                         var title = current.children(".titleBar").children("tbody").children("tr").children(".popupTitle").html();
@@ -179,6 +193,9 @@ var setLayers = function(sec){
                     current = $(this).prev();
                     if($(this).attr("season") !== current.attr("season") || current.hasClass("tabSlide")){
                         setLayers(parseFloat(current.attr("season")));
+                        $("#slider").animate({
+                            "left" : $(".tab").eq(parseFloat(current.attr("season"))).position().left
+                        },200);
                     }
                     if(current.hasClass("popupSlide")){
                         var title = current.children(".titleBar").children("tbody").children("tr").children(".popupTitle").html();

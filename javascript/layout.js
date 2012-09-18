@@ -19,8 +19,16 @@ var resetLayout = function(){
     $(".nextArrow").first().css("border-top","20px solid transparent").css("border-bottom","20px solid transparent").css("border-left","20px solid #fff").css("margin-bottom",5).css("margin-left",($(".nextArrowCon").first().width() - 20)/2);
 
     $(".singlePhoto").each(function(){
-        $(this).css("margin-left",($(this).parent(".fader").width() - $(this).width())/2).css("margin-top",($(this).parent(".fader").height() - $(this).height())/2);
-        $(this).show();
+        if($(this)[0].complete){
+            $(this).css("margin-left",($(this).parent(".fader").width() - $(this).width())/2).css("margin-top",($(this).parent(".fader").height() - $(this).height())/2);
+            $(this).show();
+        }
+        else{
+            $(this).load(function(){
+                $(this).css("margin-left",($(this).parent(".fader").width() - $(this).width())/2).css("margin-top",($(this).parent(".fader").height() - $(this).height())/2);
+                $(this).show();
+            });
+        }
     });
 };
 
@@ -52,6 +60,7 @@ var setUpTabs = function(){
 var setSection = function(sec){
 
     hideInfo($("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));
+    hideInfo($("#hoverInfo"),$("#hoverInfoArrow"));
     section = sec;
 
     $(".contentSlide").removeClass("currentSlide");
@@ -92,12 +101,13 @@ var setLayers = function(sec){
             autoPlay : false,
             animationEnd : function(data){
                 var img = data.currentImg.jqueryElement;
-                img.parent("div").parent("div").children(".photoCredit").html("© "+img.attr("credit"));
+                img.parent("div").parent("div").children(".photoCredit").html(img.attr("credit"));
                 img.parent("div").parent("div").children(".photoCaption").html(img.attr("caption"));
 
                 resetLayout();
             }
         });
+        $(".popup.fader").imageFader("pause");
 
         $(".nextArrowCon").click(function(){
             hideInfo($("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));

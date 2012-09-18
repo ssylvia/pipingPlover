@@ -125,6 +125,10 @@ var createMap = function(){
                     positionInfo(grp.geometry,$("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));
                 }
             });
+            if($(".currentSlide").first().hasClass("popupSlide")){
+                $(".popup.fader").imageFader("pause");
+                $(".currentSlide").first().children(".fader").first().imageFader("play");
+            }
         });
 
         //var layers = response.itemInfo.itemData,operationalLayers;

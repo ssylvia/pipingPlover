@@ -4,6 +4,9 @@ $(window).resize(function(){
 });
 
 $(document).ready(function(){
+    $("#learnMore").click(function(){
+        window.open("http://www.audubon.org");
+    });
     $("#slider").draggable({
     	axis : "x",
 		containment : "#tabArea",
@@ -71,10 +74,6 @@ var changeSidePanel = function(){
         "left" : -$(".currentSlide").position().left
     },0);
 
-    $("#sliderMid").css({
-        "left" : $(".tab").eq(parseFloat($(".currentSlide").attr("season"))).position().left
-    });
-
 };
 
 var resetLayout = function(){
@@ -109,6 +108,11 @@ var resetLayout = function(){
     });
     $(".contentSlide").each(function(){
         $(this).children(".textContent").css("height",$("#leftPane").height() - $(this).children(".fader").height() - $(this).children(".photoMargin").height() - $(this).children(".photoCredit").height() - $(this).children(".photoCaption").height() - $(this).children(".titleBar").height()-60);
+    });  
+    
+
+    $("#slider").css({
+        "left" : $(".tab").eq(parseFloat($(".currentSlide").attr("season"))).position().left - 14
     });
 };
 
@@ -202,7 +206,7 @@ var setLayers = function(sec){
                     if($(this).attr("season") !== current.attr("season") || current.hasClass("tabSlide")){
                         setLayers(parseFloat(current.attr("season")));
                         $("#slider").animate({
-                            "left" : $(".tab").eq(parseFloat(current.attr("season"))).position().left
+                            "left" : $(".tab").eq(parseFloat(current.attr("season"))).position().left - 14
                         },200);
                     }
                     if(current.hasClass("popupSlide")){
@@ -231,7 +235,7 @@ var setLayers = function(sec){
                     if($(this).attr("season") !== current.attr("season") || current.hasClass("tabSlide")){
                         setLayers(parseFloat(current.attr("season")));
                         $("#slider").animate({
-                            "left" : $(".tab").eq(parseFloat(current.attr("season"))).position().left
+                            "left" : $(".tab").eq(parseFloat(current.attr("season"))).position().left - 14
                         },200);
                     }
                     if(current.hasClass("popupSlide")){

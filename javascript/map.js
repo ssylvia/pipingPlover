@@ -95,12 +95,12 @@ var createMap = function(){
             positionInfo(event.graphic.geometry,$("#hoverInfo"),$("#hoverInfoArrow"));
         });
 
-        dojo.connect(map.getLayer(findLayerName("csv")),"onMouseOut",function(){
+        dojo.connect(map.getLayer(findLayerName("csv")),"onMouseOut",function(event){
             map.setCursor("default");
             hideInfo($("#hoverInfo"),$("#hoverInfoArrow"));
         });
 
-        dojo.connect(map.getLayer(findLayerName("csv")),"onClick",function(){
+        dojo.connect(map.getLayer(findLayerName("csv")),"onClick",function(event){
             $(".contentSlide").each(function(){
                 if($(this).children(".titleBar").children("tbody").children("tr").children(".popupTitle").html() === event.graphic.attributes.Point_name){
                     $(".contentSlide").removeClass("currentSlide");

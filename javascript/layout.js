@@ -108,12 +108,13 @@ var resetLayout = function(){
     });
     $(".contentSlide").each(function(){
         $(this).children(".textContent").css("height",$("#leftPane").height() - $(this).children(".fader").height() - $(this).children(".photoMargin").height() - $(this).children(".photoCredit").height() - $(this).children(".photoCaption").height() - $(this).children(".titleBar").height()-60);
-    });  
-    
-
-    $("#slider").css({
-        "left" : $(".tab").eq(parseFloat($(".currentSlide").attr("season"))).position().left - 14
     });
+
+    if($(".currentSlide").length > 0){
+        $("#slider").css({
+            "left" : $(".tab").eq(parseFloat($(".currentSlide").attr("season"))).position().left - 14
+        });
+    }
 };
 
 var addStart = function(i){

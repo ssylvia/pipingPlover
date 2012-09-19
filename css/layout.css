@@ -88,14 +88,40 @@ h1{
 #slider{
     position:absolute;
     top:0;
+    left:-13px;
     z-index:100;
 }
 
+#sliderLeft{
+    vertical-align:middle;
+}
+
+#sliderLeftArrow{
+    margin-right:-1px;
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+	border-right: 12px solid #000;
+}
+
 #sliderMid{
-    position:absolute;
     height:32px;
     width:100px;
     border:3px solid #000;
+}
+
+#sliderRight{
+    vertical-align:middle;
+}
+
+#sliderRightArrow{
+    margin-left:-1px;
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 12px solid #000;
 }
 
 .tab{

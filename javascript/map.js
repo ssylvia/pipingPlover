@@ -12,7 +12,8 @@ var urlObject,
     section = 0,
     popup,
     setPopup = true,
-    iPad = false;
+    iPad = false,
+    seasonExtent;
 
 var findLayerName = function(name){
     var layerName;
@@ -71,16 +72,27 @@ var initMap = function(){
 
 var createMap = function(){
 
+    var lods = [
+      	{"level" : 0, "resolution" : 9783.93962049996, "scale" : 36978595.474472},
+  		{"level" : 1, "resolution" : 4891.96981024998, "scale" : 18489297.737236},
+        {"level" : 2, "resolution" : 2445.98490512499, "scale" : 9244648.868618},
+        {"level" : 3, "resolution" : 1222.99245256249, "scale" : 4622324.434309},
+      	{"level" : 4, "resolution" : 611.49622628138, "scale" : 2311162.217155},
+        {"level" : 5, "resolution" : 305.748113140558, "scale" : 1155581.108577},
+        {"level" : 6, "resolution" : 152.874056570411, "scale" : 577790.554289}
+    ];
+
     popup = new esri.dijit.Popup({
         highlight:false
     }, dojo.create("div"));
 
     var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap,"map",{
         mapOptions: {
-            slider : true,
+            slider : false,
             nav : false,
             wrapAround180 : true,
-            infoWindow : popup
+            infoWindow : popup,
+            lods : lods
         },
         ignorePopups:true
     });
@@ -104,7 +116,7 @@ var createMap = function(){
                         $("#contentSlider").animate({
                             "left" : -$(".currentSlide").position().left
                         },"fast");
-                        map.centerAndZoom(event.graphic.geometry,7);
+                        map.centerAndZoom(event.graphic.geometry,3);
                     }
                 });
             }
@@ -124,7 +136,7 @@ var createMap = function(){
                         $("#contentSlider").animate({
                             "left" : -$(".currentSlide").position().left
                         },"fast");
-                        map.centerAndZoom(event.graphic.geometry,7);
+                        map.centerAndZoom(event.graphic.geometry,3);
                     }
                 });
             }
@@ -159,11 +171,13 @@ var createMap = function(){
         if(map.loaded){
             setSection(section);
             changeSidePanel();
+            $("#zoomToggle").show();
         }
         else{
             dojo.connect(map,"onLoad",function(){
                 setSection(section);
                 changeSidePanel();
+                $("#zoomToggle").show();
             });
         }
 

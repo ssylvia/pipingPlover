@@ -348,6 +348,24 @@ h1{
     background-color:#90b5df;
 }
 
+.zoomToggle{
+    display:none;
+    position:absolute;
+    left:15px;
+	top:15px;
+	width:32px;
+	z-index:5;
+	cursor:pointer;
+}
+
+.zoomExtent{
+    margin-top:-4px;
+}
+
+.zoomOut{
+    margin-top:-4px;
+}
+
 #learnMore{
     position:absolute;
     bottom:0;

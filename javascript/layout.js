@@ -4,6 +4,15 @@ $(window).resize(function(){
 });
 
 $(document).ready(function(){
+    $("#zoomIn").click(function(){
+        map.setLevel(map.getLevel()+1);
+    });
+    $("#zoomOut").click(function(){
+        map.setLevel(map.getLevel()-1);
+    });
+    $("#zoomExtent").click(function(){
+        map.setExtent(seasonExtent);
+    });
     if(navigator.userAgent.match(/iPad/i) != null){
         iPad = true;
         $("#banner").css("height",125);
@@ -95,11 +104,17 @@ var changeSidePanel = function(){
         $("#sliderMid").css({
             "height" : 40
         });
+        $(".zoomExtent").css("margin-top","-3px");
     }
     if($.browser.mozilla){
         $("#sliderMid").css({
             "height" : 37
         });
+        $(".zoomExtent").css("margin-top","-5px");
+    }
+    if(iPad == true){
+        $(".zoomExtent").css("margin-top","-5px");
+        $(".zoomOut").css("margin-top","-5px");
     }
 };
 
@@ -265,7 +280,7 @@ var setLayers = function(sec){
                         var title = current.children(".titleBar").children("tbody").children("tr").children(".popupTitle").html();
                         dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
                             if (grp.attributes.Point_name === title){
-                                map.centerAndZoom(grp.geometry,7);
+                                map.centerAndZoom(grp.geometry,3);
                             }
                         });
                     }
@@ -302,7 +317,7 @@ var setLayers = function(sec){
                         var title = current.children(".titleBar").children("tbody").children("tr").children(".popupTitle").html();
                         dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
                             if (grp.attributes.Point_name === title){
-                                map.centerAndZoom(grp.geometry,7);
+                                map.centerAndZoom(grp.geometry,3);
                             }
                         });
                     }
@@ -335,9 +350,9 @@ var setLayers = function(sec){
                 grp.hide();
             }
         });
-
-        map.setExtent(new esri.geometry.Extent({"xmin":-10079006.019723145,"ymin":3137303.833390451,"xmax":-6018671.077215662,"ymax":7114475.289123686,
-  "spatialReference":{"wkid":102100}}));
+        seasonExtent = new esri.geometry.Extent({"xmin":-10079006.019723145,"ymin":3137303.833390451,"xmax":-6018671.077215662,"ymax":7114475.289123686,
+  "spatialReference":{"wkid":102100}});
+        map.setExtent(seasonExtent);
     }
     else if(sec === 2){
         map.getLayer(findLayerName("FallMigration")).show();
@@ -352,8 +367,9 @@ var setLayers = function(sec){
             }
         });
 
-        map.setExtent(new esri.geometry.Extent({"xmin":-10504607.393214896,"ymin":2265310.214713391,"xmax":-6444272.450707414,"ymax":6242481.670446625,
-  "spatialReference":{"wkid":102100}}));
+        seasonExtent = new esri.geometry.Extent({"xmin":-10504607.393214896,"ymin":2265310.214713391,"xmax":-6444272.450707414,"ymax":6242481.670446625,
+  "spatialReference":{"wkid":102100}});
+        map.setExtent(seasonExtent);
     }
     else if(sec === 3){
         map.getLayer(findLayerName("summer")).hide();
@@ -367,8 +383,9 @@ var setLayers = function(sec){
             }
         });
 
-        map.setExtent(new esri.geometry.Extent({"xmin":-11297106.502475392,"ymin":1180515.909290458,"xmax":-7236771.559967909,"ymax":5157687.365023692,
-  "spatialReference":{"wkid":102100}}));
+        seasonExtent = new esri.geometry.Extent({"xmin":-11297106.502475392,"ymin":1180515.909290458,"xmax":-7236771.559967909,"ymax":5157687.365023692,
+  "spatialReference":{"wkid":102100}});
+        map.setExtent(seasonExtent);
     }
     else if(sec === 4){
         map.getLayer(findLayerName("SpringMigration")).show();
@@ -383,16 +400,18 @@ var setLayers = function(sec){
             }
         });
 
-        map.setExtent(new esri.geometry.Extent({"xmin":-10504607.393214896,"ymin":2265310.214713391,"xmax":-6444272.450707414,"ymax":6242481.670446625,
-  "spatialReference":{"wkid":102100}}));
+        seasonExtent = new esri.geometry.Extent({"xmin":-10504607.393214896,"ymin":2265310.214713391,"xmax":-6444272.450707414,"ymax":6242481.670446625,
+  "spatialReference":{"wkid":102100}});
+        map.setExtent(seasonExtent);
     }
     else{
         map.getLayer(findLayerName("csv")).hide();
         map.getLayer(findLayerName("summer")).show();
         map.getLayer(findLayerName("winter")).show();
 
-        map.setExtent(new esri.geometry.Extent({"xmin":-13762659.286841381,"ymin":652183.1697834609,"xmax":-5641989.401826414,"ymax":8606526.081249928,
-  "spatialReference":{"wkid":102100}}));
+        seasonExtent = new esri.geometry.Extent({"xmin":-13762659.286841381,"ymin":652183.1697834609,"xmax":-5641989.401826414,"ymax":8606526.081249928,
+  "spatialReference":{"wkid":102100}});
+        map.setExtent(seasonExtent);
     }
 };
 

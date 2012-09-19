@@ -11,36 +11,44 @@ $(document).ready(function(){
     $("#slider").draggable({
     	axis : "x",
 		containment : "#tabArea",
+        drag: function(){
+            if($.browser.mozilla){
+                $("#sliderRightArrow").show();
+            }
+        },
         stop: function(){
             if ($("#slider").position().left <= $(".tab").first().width()/2){
                 $("#slider").animate({
-                    "left" : $(".tab").eq(0).position().left - 14
+                    "left" : $(".tab").eq(0).position().left - 13
                 },100);
                 setSection(0);
             }
             else if ($("#slider").position().left <= $(".tab").first().width()+($(".tab").first().width()/2)){
                 $("#slider").animate({
-                    "left" : $(".tab").eq(1).position().left - 14
+                    "left" : $(".tab").eq(1).position().left - 13
                 },100);
                 setSection(1);
             }
             else if ($("#slider").position().left <= ($(".tab").first().width()*2)+($(".tab").first().width()/2)){
                 $("#slider").animate({
-                    "left" : $(".tab").eq(2).position().left - 14
+                    "left" : $(".tab").eq(2).position().left - 13
                 },100);
                 setSection(2);
             }
             else if ($("#slider").position().left <= ($(".tab").first().width()*3)+($(".tab").first().width()/2)){
                 $("#slider").animate({
-                    "left" : $(".tab").eq(3).position().left - 14
+                    "left" : $(".tab").eq(3).position().left - 13
                 },100);
                 setSection(3);
             }
             else{
                 $("#slider").animate({
-                    "left" : $(".tab").eq(4).position().left - 14
+                    "left" : $(".tab").eq(4).position().left - 13
                 },100);
                 setSection(4);
+                if($.browser.mozilla){
+                    $("#sliderRightArrow").hide();
+                }
             }
         }
     });
@@ -77,17 +85,17 @@ var changeSidePanel = function(){
 
     if($.browser.msie && $.browser.version === "9.0"){
         $("#sliderMid").css({
-            "height" : 34,
+            "height" : 34
         });
     }
     if($.browser.msie && $.browser.version === "7.0"){
         $("#sliderMid").css({
-            "height" : 40,
+            "height" : 40
         });
     }
     if($.browser.mozilla){
         $("#sliderMid").css({
-            "height" : 37,
+            "height" : 37
         });
     }
 };
@@ -104,7 +112,7 @@ var resetLayout = function(){
         }
     });
 
-    $("#sliderMid").css("width",$("#tabText0").width()+6);
+    $("#sliderMid").css("width",$("#tabText0").width()+7);
 
     $("#contentSlider").css("width",$("#contentSlider").children(".contentSlide").length * getWidth());
 
@@ -128,7 +136,7 @@ var resetLayout = function(){
 
     if($(".currentSlide").length > 0){
         $("#slider").css({
-            "left" : $(".tab").eq(parseFloat($(".currentSlide").attr("season"))).position().left - 14
+            "left" : $(".tab").eq(parseFloat($(".currentSlide").attr("season"))).position().left - 13
         });
     }
 };
@@ -170,14 +178,23 @@ var setSection = function(sec){
         "left" : -$(".currentSlide").position().left
     },0);
 
+
+    if($.browser.mozilla){
+        if(sec === 4){
+            $("#sliderRightArrow").hide();
+        }
+        else{
+            $("#sliderRightArrow").show();
+        }
+    }
     if($.browser.msie){
         $("#slider").css({
-            "left" : $(".tab").eq(sec).position().left - 14
+            "left" : $(".tab").eq(sec).position().left - 13
         });
     }
     else{
         $("#slider").animate({
-            "left" : $(".tab").eq(sec).position().left - 14
+            "left" : $(".tab").eq(sec).position().left - 13
         },200);
     }
 
@@ -230,8 +247,16 @@ var setLayers = function(sec){
                     if($(this).attr("season") !== current.attr("season") || current.hasClass("tabSlide")){
                         setLayers(parseFloat(current.attr("season")));
                         $("#slider").animate({
-                            "left" : $(".tab").eq(parseFloat(current.attr("season"))).position().left - 14
+                            "left" : $(".tab").eq(parseFloat(current.attr("season"))).position().left - 13
                         },200);
+                        if($.browser.mozilla){
+                            if(parseFloat(current.attr("season")) === 4){
+                                $("#sliderRightArrow").hide();
+                            }
+                            else{
+                                $("#sliderRightArrow").show();
+                            }
+                        }
                     }
                     if(current.hasClass("popupSlide")){
                         var title = current.children(".titleBar").children("tbody").children("tr").children(".popupTitle").html();
@@ -259,8 +284,16 @@ var setLayers = function(sec){
                     if($(this).attr("season") !== current.attr("season") || current.hasClass("tabSlide")){
                         setLayers(parseFloat(current.attr("season")));
                         $("#slider").animate({
-                            "left" : $(".tab").eq(parseFloat(current.attr("season"))).position().left - 14
+                            "left" : $(".tab").eq(parseFloat(current.attr("season"))).position().left - 13
                         },200);
+                        if($.browser.mozilla){
+                            if(parseFloat(current.attr("season")) === 4){
+                                $("#sliderRightArrow").hide();
+                            }
+                            else{
+                                $("#sliderRightArrow").show();
+                            }
+                        }
                     }
                     if(current.hasClass("popupSlide")){
                         var title = current.children(".titleBar").children("tbody").children("tr").children(".popupTitle").html();

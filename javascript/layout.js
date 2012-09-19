@@ -4,6 +4,7 @@ $(window).resize(function(){
 });
 
 $(document).ready(function(){
+
     $("#learnMore").click(function(){
         window.open("http://www.audubon.org");
     });
@@ -74,6 +75,21 @@ var changeSidePanel = function(){
         "left" : -$(".currentSlide").position().left
     },0);
 
+    if($.browser.msie && $.browser.version === "9.0"){
+        $("#sliderMid").css({
+            "height" : 34,
+        });
+    }
+    if($.browser.msie && $.browser.version === "7.0"){
+        $("#sliderMid").css({
+            "height" : 40,
+        });
+    }
+    if($.browser.mozilla){
+        $("#sliderMid").css({
+            "height" : 37,
+        });
+    }
 };
 
 var resetLayout = function(){
@@ -154,9 +170,16 @@ var setSection = function(sec){
         "left" : -$(".currentSlide").position().left
     },0);
 
-    $("#slider").animate({
-        "left" : $(".tab").eq(sec).position().left - 14
-    },200);
+    if($.browser.msie){
+        $("#slider").css({
+            "left" : $(".tab").eq(sec).position().left - 14
+        });
+    }
+    else{
+        $("#slider").animate({
+            "left" : $(".tab").eq(sec).position().left - 14
+        },200);
+    }
 
     setLayers(sec);
 

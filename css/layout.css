@@ -30,7 +30,7 @@ h1{
 }
 
 #banner{
-	height:150px;
+	height:115px;
 	width:100%;
 	background-color:#444;
 }
@@ -54,7 +54,7 @@ h1{
 }
 
 #logoArea{
-	width:260px !important;
+	width:215px !important;
     overflow:hidden;
 }
 
@@ -213,6 +213,7 @@ h1{
     background:#000;
     height:310px;
     width:100%;
+    overflow:hidden;
 }
 
 .singlePhoto{

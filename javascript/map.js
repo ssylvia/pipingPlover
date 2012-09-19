@@ -11,7 +11,8 @@ var urlObject,
     map,
     section = 0,
     popup,
-    setPopup = true;
+    setPopup = true,
+    iPad = false;
 
 var findLayerName = function(name){
     var layerName;
@@ -90,9 +91,23 @@ var createMap = function(){
         dojo.connect(dijit.byId("map"),"resize",map,map.resize);
 
         dojo.connect(map.getLayer(findLayerName("csv")),"onMouseOver",function(event){
-            map.setCursor("pointer");
-            $("#hoverInfo").html(event.graphic.attributes.Site_title);
-            positionInfo(event.graphic.geometry,$("#hoverInfo"),$("#hoverInfoArrow"));
+            if(iPad === false){
+                map.setCursor("pointer");
+                $("#hoverInfo").html(event.graphic.attributes.Site_title);
+                positionInfo(event.graphic.geometry,$("#hoverInfo"),$("#hoverInfoArrow"));
+            }
+            else{
+                $(".contentSlide").each(function(){
+                    if($(this).children(".titleBar").children("tbody").children("tr").children(".popupTitle").html() === event.graphic.attributes.Point_name){
+                        $(".contentSlide").removeClass("currentSlide");
+                        $(this).addClass("currentSlide");
+                        $("#contentSlider").animate({
+                            "left" : -$(".currentSlide").position().left
+                        },"fast");
+                        map.centerAndZoom(event.graphic.geometry,7);
+                    }
+                });
+            }
         });
 
         dojo.connect(map.getLayer(findLayerName("csv")),"onMouseOut",function(event){
@@ -101,16 +116,18 @@ var createMap = function(){
         });
 
         dojo.connect(map.getLayer(findLayerName("csv")),"onClick",function(event){
-            $(".contentSlide").each(function(){
-                if($(this).children(".titleBar").children("tbody").children("tr").children(".popupTitle").html() === event.graphic.attributes.Point_name){
-                    $(".contentSlide").removeClass("currentSlide");
-                    $(this).addClass("currentSlide");
-                    $("#contentSlider").animate({
-                        "left" : -$(".currentSlide").position().left
-                    },"fast");
-                    map.centerAndZoom(event.graphic.geometry,7);
-                }
-            });
+            if(iPad === false){
+                $(".contentSlide").each(function(){
+                    if($(this).children(".titleBar").children("tbody").children("tr").children(".popupTitle").html() === event.graphic.attributes.Point_name){
+                        $(".contentSlide").removeClass("currentSlide");
+                        $(this).addClass("currentSlide");
+                        $("#contentSlider").animate({
+                            "left" : -$(".currentSlide").position().left
+                        },"fast");
+                        map.centerAndZoom(event.graphic.geometry,7);
+                    }
+                });
+            }
         });
 
         dojo.connect(map,"onPanStart",function(){

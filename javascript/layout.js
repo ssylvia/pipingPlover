@@ -4,7 +4,10 @@ $(window).resize(function(){
 });
 
 $(document).ready(function(){
-
+    if(navigator.userAgent.match(/iPad/i) != null){
+        iPad = true;
+        $("#banner").css("height",125);
+    }
     $("#learnMore").click(function(){
         window.open("http://www.audubon.org");
     });

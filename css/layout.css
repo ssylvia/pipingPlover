@@ -224,12 +224,15 @@ h1{
     max-width:100%;
 }
 
-.photoCredit{
+.photoCreditCon{
     background:#000;
-    text-align:right;
     padding:5px 5px 5px 15px;
     color#dadada;
     font-size:10px;
+}
+
+.photoCredit{
+    text-align:right;
 }
 
 .photoCaption{

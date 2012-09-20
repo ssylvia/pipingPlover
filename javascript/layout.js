@@ -154,7 +154,7 @@ var resetLayout = function(){
         }
     });
     $(".contentSlide").each(function(){
-        $(this).children(".textContent").css("height",$("#leftPane").height() - $(this).children(".fader").height() - $(this).children(".photoMargin").height() - $(this).children(".photoCredit").height() - $(this).children(".photoCaption").height() - $(this).children(".titleBar").height()-60);
+        $(this).children(".textContent").css("height",$("#leftPane").height() - $(this).children(".fader").height() - $(this).children(".photoMargin").height() - $(this).children(".photoCreditCon").height() - $(this).children(".titleBar").height()-60);
     });
 
     if($(".currentSlide").length > 0){
@@ -162,6 +162,8 @@ var resetLayout = function(){
             "left" : $(".tab").eq(parseFloat($(".currentSlide").attr("season"))).position().left - 13
         });
     }
+
+    positionCredit();
 };
 
 var addStart = function(i){
@@ -177,7 +179,7 @@ var setUpTabs = function(){
     dojo.forEach(configOptions.tabTitles,function(tab,i){
         $("#tabArea").append("<div id='tab"+i+"' class='tab'><p id='tabText"+i+"' class='tabText'>"+tab.title+"</p></div>");
         //Content Slider
-        $("#contentSlider").append("<div class='contentSlide tabSlide "+tab.season+"Slide "+tab.season+"' season='"+i+"'><div class='photoMargin'></div><div class='tabPhoto fader "+tab.season+"'><img class='tabPhoto singlePhoto' src='"+sectionData[i].images[0].src+"' alt=''></div><div class='tabPhoto photoCredit "+tab.season+"' style='color:#ccc;'>"+sectionData[i].images[0].copyright+"</div><table class='titleBar "+tab.season+"'><tbody><tr><td class='prevArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='tabTitle "+tab.season+"title'>"+sectionData[i].title+"</td><td class='nextArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div>"+addStart(i)+"</td></tr></tbody></table><div class='textContent "+tab.season+"'>"+sectionData[i].text+"</div></div>");
+        $("#contentSlider").append("<div class='contentSlide tabSlide "+tab.season+"Slide "+tab.season+"' season='"+i+"'><div class='photoMargin'></div><div class='tabPhoto fader "+tab.season+"'><img class='tabPhoto singlePhoto' src='"+sectionData[i].images[0].src+"' alt=''></div><div class='tabPhoto photoCreditCon "+tab.season+"' style='color:#ccc;'><p class='photoCredit'>"+sectionData[i].images[0].copyright+"</p></div><table class='titleBar "+tab.season+"'><tbody><tr><td class='prevArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='tabTitle "+tab.season+"title'>"+sectionData[i].title+"</td><td class='nextArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div>"+addStart(i)+"</td></tr></tbody></table><div class='textContent "+tab.season+"'>"+sectionData[i].text+"</div></div>");
     });
 
     $(".tab").eq(section).addClass("selected");
@@ -244,17 +246,28 @@ var setLayers = function(sec){
 
     if($(".contentSlide").length === sectionData.length){
         dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
-            $(".contentSlide."+grp.attributes.Season.toLowerCase()).last().after("<div class='contentSlide popupSlide "+grp.attributes.Season.toLowerCase()+"Slide "+grp.attributes.Season.toLowerCase()+"' season='"+grp.attributes.Season_Number+"'><div class='photoMargin'></div><div class='popup fader "+grp.attributes.Season.toLowerCase()+"'>"+getPhotoTags(grp.attributes)+"</div><div class='photoCredit "+grp.attributes.Season.toLowerCase()+"' style='color:#ccc;'>"+grp.attributes.Photo_1_credit+"</div><table class='titleBar "+grp.attributes.Season.toLowerCase()+"'><tbody><tr><td class='prevArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='popupTitle "+grp.attributes.Season.toLowerCase()+"title'>"+grp.attributes.Point_name+"</td><td class='nextArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div></td></tr></tbody></table><div class='textContent "+grp.attributes.Season.toLowerCase()+"'><strong>"+grp.attributes.Site_title+"</strong><br>"+grp.attributes.Description+"</div></div>");
+            $(".contentSlide."+grp.attributes.Season.toLowerCase()).last().after("<div class='contentSlide popupSlide "+grp.attributes.Season.toLowerCase()+"Slide "+grp.attributes.Season.toLowerCase()+"' season='"+grp.attributes.Season_Number+"'><div class='photoMargin'></div><div class='popup fader "+grp.attributes.Season.toLowerCase()+"'>"+getPhotoTags(grp.attributes)+"</div><div class='photoCreditCon "+grp.attributes.Season.toLowerCase()+"' style='color:#ccc;'><p class='photoCredit'>"+grp.attributes.Photo_1_credit+"</p></div><table class='titleBar "+grp.attributes.Season.toLowerCase()+"'><tbody><tr><td class='prevArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='popupTitle "+grp.attributes.Season.toLowerCase()+"title'>"+grp.attributes.Point_name+"</td><td class='nextArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div></td></tr></tbody></table><div class='textContent "+grp.attributes.Season.toLowerCase()+"'><strong>"+grp.attributes.Site_title+"</strong><br>"+grp.attributes.Description+"</div></div>");
         });
 
         $(".contentSlide").last().children(".titleBar").children("tbody").children("tr").children(".nextArrowCon").hide();
 
         $(".popup.fader").imageFader({
             autoPlay : false,
+            animationStart : function(data){
+                var img = data.currentImg.jqueryElement;
+                img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").fadeOut();
+            },
             animationEnd : function(data){
                 var img = data.currentImg.jqueryElement;
-                img.parent("div").parent("div").children(".photoCredit").html(img.attr("credit"));
-                img.parent("div").parent("div").children(".photoCaption").html(img.attr("caption"));
+                var padding = ($(".currentSlide").width() - img.width() - img.offset().left);
+                if(padding < 5){
+                    img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").css("padding-right",0);
+                }
+                else{
+                    img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").css("padding-right",padding - 5);
+                }
+                img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").html(img.attr("credit"));
+                img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").fadeIn();
 
                 resetLayout();
             }
@@ -295,6 +308,9 @@ var setLayers = function(sec){
             $("#contentSlider").animate({
                 "left" : -$(".currentSlide").position().left
             },"fast");
+            setTimeout(function() {
+                positionCredit();
+            }, 200);
         });
 
         $(".prevArrowCon").click(function(){
@@ -332,6 +348,9 @@ var setLayers = function(sec){
             $("#contentSlider").animate({
                 "left" : -$(".currentSlide").position().left
             },"fast");
+            setTimeout(function() {
+                positionCredit();
+            }, 200);
         });
 
         setTimeout(function() {
@@ -453,4 +472,30 @@ var positionInfo = function(pt,element,arrow){
 var hideInfo = function(element, arrow){
     element.hide();
     arrow.hide();
+};
+
+var positionCredit = function(){
+    $(".contentSlide").each(function(){
+        var img = $(this).children(".fader").children("img").first();
+        if(img[0].complete){
+            var padding = ($("#leftPane").width() - img.width() - img.offset().left);
+            if(padding < 5){
+                img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").css("padding-right",0);
+            }
+            else{
+                img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").css("padding-right",padding - 5);
+            }
+        }
+        else{
+            img.load(function(){
+                var padding = ($("#leftPane").width() - img.width() - img.offset().left);
+                if(padding < 5){
+                    img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").css("padding-right",0);
+                }
+                else{
+                    img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").css("padding-right",padding - 5);
+                }
+            });
+        }
+    });
 };

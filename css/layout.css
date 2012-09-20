@@ -90,6 +90,7 @@ h1{
     top:0;
     left:-13px;
     z-index:100;
+    cursor:move;
 }
 
 #sliderLeft{
@@ -154,6 +155,7 @@ h1{
 	text-overflow: ellipsis;
     -o-text-overflow:ellipsis;
 	overflow:hidden;
+    text-align:center;
 	padding:5px 5px 0px 7px;
     font-weight:bold;
 }
@@ -510,4 +512,18 @@ h1{
 
 .esriPopup .titleButton.maximize{
     display:none;
+}
+
+#loadingModal{
+    position:absolute;
+    height:100%;
+    width:100%;
+    background-color:#fff;
+    z-index:1000;
+}
+
+#loader{
+    position:absolute;
+    display:none;
+    text-align:center;
 }

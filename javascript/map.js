@@ -166,6 +166,10 @@ var createMap = function(){
             }
         });
 
+        dojo.connect(map,"onUpdateEnd",function(){
+            $("#loadingModal").fadeOut();
+        });
+
         //var layers = response.itemInfo.itemData,operationalLayers;
 
         if(map.loaded){

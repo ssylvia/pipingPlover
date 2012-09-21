@@ -32,7 +32,7 @@ function init(){
         "title" : "A Diminutive Beachcomber's Life on the Edge",
         "text" : "The Piping Plover, a federally threatened and endangered shorebird, inhabits wide, open beaches, shorelines, and dry lakebeds in North America.The global population of these sparrow-sized birds is only about 8,000 adults. It breeds primarily along the Atlantic coast from eastern Canada to North Carolina, on the shores of the Great Lakes, and along rivers, lakes, and wetlands of the northern Great Plains. In winter, the birds migrate to coastal beaches, sandflats, and mudflats from the Carolinas to the Gulf of Mexico, with some scattering to the Caribbean.<br><br>With this Map Story, Audubon, in partnership with ESRI, offers an up-close, interactive look at a year in the life of an Atlantic Coast plover. Discover the threats that the imperiled bird faces on its 4,000-mile odyssey from its breeding grounds in Canada to its winter grounds in the Bahamas, and back—and Audubon’s efforts to protect these charismatic birds every flap of the way.",
         "images" : [{
-            "src" : "images/photos/adultchickwrackHA7P2218a_Sidney Maddock.jpg",
+            "src" : "images/photos/PIPL_Goldenrod_chicks.jpg",
             "copyright" : "(Sidney Maddock)"
         }]
         },
@@ -59,7 +59,7 @@ function init(){
         "title" : "Winter:<br>Snowbirds Heading South",
         "text" : "In the winter, Piping Plovers flock to the sandy beaches and mudflats of the Gulf of Mexico and Atlantic coasts where they dine on worms, tiny crustaceans, and other marine animals. At least, that’s what about half of the 8,000 or so Piping Plovers do. The whereabouts of the other half of the population has long been unknown, but now scientists are starting to solve the mystery. In 2011, an international team of shorebird biologists, including Audubon scientists, discovered more than 1,000 plovers wintering in the Bahamas.<br><br>While many conservation efforts have focused on safeguarding the birds’ breeding habitat, we now know that plovers spend nearly two-thirds of the year outside these areas. And research shows that even a small drop in the number of birds that survive the winter can threaten the recovery of the species. So Audubon is working to conserve healthy winter habitats in the United States, and extending its reach, partnering with conservation groups in the Bahamas to increase monitoring efforts and help spread local awareness about threatened birds.",
         "images" : [{
-            "src" : "images/photos/nj_pipl_migration.jpg",
+            "src" : "images/photos/nj_pipl_migration[1].jpg",
             "copyright" : "(Todd Pover)"
         }]
         },

@@ -84,13 +84,13 @@ var changeSidePanel = function(){
     $("#leftPane").css("width",getWidth());
     $(".contentSlide").css("width",getWidth());
     if(getWidth() === 350){
-        $(".fader").css("height",200);
+        $(".fader").css("height",245);
         $(".tabTitle").css("font-size",16);
         $(".popupTitle").css("font-size",16);
         $(".textContent").css("font-size",13);
     }
     else{
-        $(".fader").css("height",310);
+        $(".fader").css("height",315);
         $(".tabTitle").css("font-size",24);
         $(".popupTitle").css("font-size",24);
         $(".textContent").css("font-size",15);
@@ -154,7 +154,7 @@ var resetLayout = function(){
         }
     });
     $(".contentSlide").each(function(){
-        $(this).children(".textContent").css("height",$("#leftPane").height() - $(this).children(".fader").height() - $(this).children(".photoMargin").height() - $(this).children(".photoCreditCon").height() - $(this).children(".titleBar").height()-60);
+        $(this).children(".textContent").css("height",$("#leftPane").height() - $(this).children(".fader").height() - $(this).children(".photoMargin").height() - $(this).children(".photoCreditCon").height() - $(this).children(".titleBar").height()-37);
     });
 
     if($(".currentSlide").length > 0){

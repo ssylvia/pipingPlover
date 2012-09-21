@@ -239,6 +239,12 @@ var getPhotoTags = function (attr) {
     }
 };
 
+var getImgLength = function(attr){
+    if(attr.Photo_2_URL !== null){
+        return "<span class='playPause icon-pause'></span>";
+    }
+};
+
 var setLayers = function(sec){
 
     popup.hide();
@@ -246,10 +252,23 @@ var setLayers = function(sec){
 
     if($(".contentSlide").length === sectionData.length){
         dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
-            $(".contentSlide."+grp.attributes.Season.toLowerCase()).last().after("<div class='contentSlide popupSlide "+grp.attributes.Season.toLowerCase()+"Slide "+grp.attributes.Season.toLowerCase()+"' season='"+grp.attributes.Season_Number+"'><div class='photoMargin'></div><div class='popup fader "+grp.attributes.Season.toLowerCase()+"'>"+getPhotoTags(grp.attributes)+"</div><div class='photoCreditCon "+grp.attributes.Season.toLowerCase()+"' style='color:#ccc;'><p class='photoCredit'>"+grp.attributes.Photo_1_credit+"</p></div><table class='titleBar "+grp.attributes.Season.toLowerCase()+"'><tbody><tr><td class='prevArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='popupTitle "+grp.attributes.Season.toLowerCase()+"title'>"+grp.attributes.Point_name+"</td><td class='nextArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div></td></tr></tbody></table><div class='textContent "+grp.attributes.Season.toLowerCase()+"'><strong>"+grp.attributes.Site_title+"</strong><br>"+grp.attributes.Description+"</div></div>");
+            $(".contentSlide."+grp.attributes.Season.toLowerCase()).last().after("<div class='contentSlide popupSlide "+grp.attributes.Season.toLowerCase()+"Slide "+grp.attributes.Season.toLowerCase()+"' season='"+grp.attributes.Season_Number+"'><div class='photoMargin'></div><div class='popup fader "+grp.attributes.Season.toLowerCase()+"'>"+getPhotoTags(grp.attributes)+"</div><div class='photoCreditCon "+grp.attributes.Season.toLowerCase()+"' style='color:#ccc;'>"+getImgLength(grp.attributes)+"<p class='photoCredit'>"+grp.attributes.Photo_1_credit+"</p></div><table class='titleBar "+grp.attributes.Season.toLowerCase()+"'><tbody><tr><td class='prevArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='popupTitle "+grp.attributes.Season.toLowerCase()+"title'>"+grp.attributes.Point_name+"</td><td class='nextArrowCon "+grp.attributes.Season.toLowerCase()+" arrowCon popupArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div></td></tr></tbody></table><div class='textContent "+grp.attributes.Season.toLowerCase()+"'><strong>"+grp.attributes.Site_title+"</strong><br>"+grp.attributes.Description+"</div></div>");
         });
 
         $(".contentSlide").last().children(".titleBar").children("tbody").children("tr").children(".nextArrowCon").hide();
+
+        $(".playPause").click(function(){
+            if($(this).hasClass("icon-pause")){
+                $(this).removeClass("icon-pause");
+                $(this).addClass("icon-play");
+                $(".popup.fader").imageFader("pause");
+            }
+            else{
+                $(this).removeClass("icon-play");
+                $(this).addClass("icon-pause");
+                $(".currentSlide").first().children(".fader").first().imageFader("play");
+            }
+        });
 
         $(".popup.fader").imageFader({
             autoPlay : false,
@@ -259,6 +278,7 @@ var setLayers = function(sec){
             },
             animationEnd : function(data){
                 var img = data.currentImg.jqueryElement;
+                /*
                 var padding = ($(".currentSlide").width() - img.width() - img.offset().left);
                 if(padding < 5){
                     img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").css("padding-right",0);
@@ -266,6 +286,7 @@ var setLayers = function(sec){
                 else{
                     img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").css("padding-right",padding - 5);
                 }
+                */
                 img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").html(img.attr("credit"));
                 img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").fadeIn();
 
@@ -475,6 +496,7 @@ var hideInfo = function(element, arrow){
 };
 
 var positionCredit = function(){
+    /*
     $(".contentSlide").each(function(){
         var img = $(this).children(".fader").children("img").first();
         if(img[0].complete){
@@ -498,4 +520,5 @@ var positionCredit = function(){
             });
         }
     });
+    */
 };

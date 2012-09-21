@@ -234,13 +234,30 @@ h1{
 }
 
 .playPause{
-    font-size:14px;
+    line-height:1.1;
     cursor:pointer;
+}
+
+.imgSelector{
+    font-size:30px;
+    line-height:0.65;
+    color:#666;
+    cursor:pointer:
+}
+
+.selector{
+    margin:0 3px 0 3px;
+    cursor:pointer;
+}
+
+.selectedBull {
+    color:#fff;
 }
 
 .photoCredit{
     width:300px;
     display:inline;
+    font-size:10px;
     float:right;
     text-align:right;
 }

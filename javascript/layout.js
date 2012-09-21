@@ -240,8 +240,11 @@ var getPhotoTags = function (attr) {
 };
 
 var getImgLength = function(attr){
-    if(attr.Photo_2_URL !== null){
-        return "<span class='playPause icon-pause'></span>";
+    if (attr.Photo_2_URL !== null && attr.Photo_3_URL !== null){
+        return "</span><span class='imgSelector'><span class='selector selectedBull'>&bull;</span><span class='selector'>&bull;</span><span class='selector'>&bull;</span></span><span class='playPause'>";
+    }
+    else if (attr.Photo_2_URL !== null){
+        return "</span><span class='imgSelector'><span class='selector selectedBull'>&bull;</span><span class='selector'>&bull;</span></span><span class='playPause'>";
     }
     else{
         return "";
@@ -261,6 +264,7 @@ var setLayers = function(sec){
         $(".contentSlide").last().children(".titleBar").children("tbody").children("tr").children(".nextArrowCon").hide();
 
         $(".playPause").click(function(){
+            /*
             if($(this).hasClass("icon-pause")){
                 $(this).removeClass("icon-pause");
                 $(this).addClass("icon-play");
@@ -270,6 +274,14 @@ var setLayers = function(sec){
                 $(this).removeClass("icon-play");
                 $(this).addClass("icon-pause");
                 $(".currentSlide").first().children(".fader").first().imageFader("play");
+            }
+            */
+        });
+
+        $(".selector").click(function(){
+            if(!$(this).hasClass("selectedBull")){
+                $(this).parent("span").parent("div").parent("div").children(".fader").imageFader("goTo",$(this).index());
+                $(this).parent("span").parent("div").children(".playPause").fadeIn();
             }
         });
 
@@ -292,6 +304,8 @@ var setLayers = function(sec){
                 */
                 img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").html(img.attr("credit"));
                 img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").fadeIn();
+                img.parent("div").parent("div").children(".photoCreditCon").children(".imgSelector").children(".selector").removeClass("selectedBull");
+                img.parent("div").parent("div").children(".photoCreditCon").children(".imgSelector").children(".selector").eq(data.currentImg.index).addClass("selectedBull");
 
                 resetLayout();
             }

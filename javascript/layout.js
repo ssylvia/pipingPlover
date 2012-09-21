@@ -243,6 +243,9 @@ var getImgLength = function(attr){
     if(attr.Photo_2_URL !== null){
         return "<span class='playPause icon-pause'></span>";
     }
+    else{
+        return "";
+    }
 };
 
 var setLayers = function(sec){

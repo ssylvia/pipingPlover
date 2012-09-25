@@ -281,7 +281,6 @@ var setLayers = function(sec){
         $(".selector").click(function(){
             if(!$(this).hasClass("selectedBull")){
                 $(this).parent("span").parent("div").parent("div").children(".fader").imageFader("goTo",$(this).index());
-                $(this).parent("span").parent("div").children(".playPause").fadeIn();
             }
         });
 

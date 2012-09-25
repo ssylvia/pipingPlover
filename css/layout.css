@@ -402,13 +402,11 @@ h1{
     position:absolute;
     bottom:0;
     left:0;
-    font-size:12px;
-    font-weight:bold;
-    background-color:#848484;
+    max-width:300px;
+    font-size:20px;
+    background-color:#444;
     color:#fff;
     padding:5px;
-    border-top:1px #777 solid;
-    border-right:1px #777 solid;
     z-index:200;
     -webkit-border-radius: 0px 5px 0px 0px;
     border-radius: 0px 5px 0px 0px;

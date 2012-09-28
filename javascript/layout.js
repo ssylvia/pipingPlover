@@ -286,9 +286,10 @@ var setLayers = function(sec){
 
         $(".popup.fader").imageFader({
             autoPlay : false,
+            animationDelay : 3000,
             animationStart : function(data){
                 var img = data.currentImg.jqueryElement;
-                img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").fadeOut();
+                img.parent("div").parent("div").children(".photoCreditCon").children(".playPause").children(".photoCredit").fadeOut();
             },
             animationEnd : function(data){
                 var img = data.currentImg.jqueryElement;
@@ -301,8 +302,8 @@ var setLayers = function(sec){
                     img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").css("padding-right",padding - 5);
                 }
                 */
-                img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").html(img.attr("credit"));
-                img.parent("div").parent("div").children(".photoCreditCon").children(".photoCredit").fadeIn();
+                img.parent("div").parent("div").children(".photoCreditCon").children(".playPause").children(".photoCredit").html(img.attr("credit"));
+                img.parent("div").parent("div").children(".photoCreditCon").children(".playPause").children(".photoCredit").fadeIn();
                 img.parent("div").parent("div").children(".photoCreditCon").children(".imgSelector").children(".selector").removeClass("selectedBull");
                 img.parent("div").parent("div").children(".photoCreditCon").children(".imgSelector").children(".selector").eq(data.currentImg.index).addClass("selectedBull");
 

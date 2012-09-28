@@ -65,6 +65,7 @@ var initMap = function(){
 
     createMap();
 
+    $("title").html(configOptions.title);
     $("#title").html(configOptions.title);
     $("#subtitle").html(configOptions.subtitle);
 

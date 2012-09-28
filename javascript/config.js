@@ -68,7 +68,7 @@ function init(){
         "title" : "Spring:<br>A Super-Highway in the Sky",
         "text" : "Piping Plovers begin their return trip north in March and face a number of hazards along the way. The Atlantic Coast population follows the coastline, while birds heading to the Great Lakes to breed take a varied route.<br><br>Whatever their trajectory, all plovers need quality foraging and roosting habitat at spring stopover sites. Plovers depend on a variety of habitat types, including sand bars, tidal flats, and gently sloping beaches. During high tide, they rest above the water line, catching their breath before taking off for the next leg of their journey. When the tide recedes, plovers flock to the exposed sand flats and refuel on worms and crustaceans. As with their breeding sites, the primary threats are from habitat loss and disturbance. Providing healthy habitat at critical stopover sites is imperative to helping these imperiled birds on the road to recovery.",
         "images" : [{
-            "src" : "images/photos/PIping_Plover_7598_96dpi.jpg",
+            "src" : "images/photos/PIPL_Spring_Migration_7591_WGolder.jpg",
             "copyright" : "Walker Golder"
         }]
         }

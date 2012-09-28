@@ -23,7 +23,7 @@ $(document).ready(function(){
         $("#banner").css("height",125);
     }
     $("#learnMore").click(function(){
-        window.open("http://www.audubon.org");
+        window.open("http://bit.ly/UUiPDT");
     });
     $("#slider").draggable({
     	axis : "x",

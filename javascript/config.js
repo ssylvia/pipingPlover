@@ -32,8 +32,8 @@ function init(){
         "title" : "A Diminutive Beachcomber's<br>Life on the Edge",
         "text" : "The Piping Plover, a federally threatened and endangered shorebird, inhabits wide, open beaches, shorelines, and dry lakebeds in North America.The global population of these sparrow-sized birds is only about 8,000 adults. It breeds primarily along the Atlantic coast from eastern Canada to North Carolina, on the shores of the Great Lakes, and along rivers, lakes, and wetlands of the northern Great Plains. In winter, the birds migrate to coastal beaches, sandflats, and mudflats from the Carolinas to the Gulf of Mexico and the Caribbean.<br><br>With this Map Story, Audubon, in partnership with ESRI, offers an up-close, interactive look at a year in the life of an Atlantic Coast plover. Discover the threats that the imperiled bird faces on its 4,000-mile odyssey from its breeding grounds in Canada to its winter grounds in the Bahamas, and back—and Audubon’s efforts to protect these charismatic birds every flap of the way.",
         "images" : [{
-            "src" : "images/photos/PIPL_Goldenrod_chicks.jpg",
-            "copyright" : "USFWS"
+            "src" : "images/photos/ShawnCarey[3].jpg",
+            "copyright" : "Shawn P. Carey/Migration Productions"
         }]
         },
         //SUMMER
@@ -41,8 +41,8 @@ function init(){
         "title" : "Summer:<br>Risky Business",
         "text" : "When it comes to selecting a nesting site, Piping Plovers along the Atlantic Coast insist on waterfront property. In the reaches above the tide line, and near bunches of grass, males dig potential nest sites, or scrapes, in the sand or gravel.<br><br>As ground-nesting birds, Piping Plovers are easy targets for raccoons, foxes, skunks, and other predators. Beachfront development has devoured their habitat, and unaware beach-goers, unrestricted off-road vehicles, and unleashed pets can destroy nests and trample young. These threats exist throughout the summer nesting range of the two eastern populations: along the Atlantic coast from eastern Canada to North Carolina, and on the shores of the Great Lakes.<br><br>To protect adult Piping Plovers and their young at this vulnerable stage, Audubon and partners are working to ensure that critical breeding grounds are fenced off and warning signs are posted to alert beach-goers to the presence of these nearly invisible birds.",
         "images" : [{
-            "src" : "images/photos/adultchickwrackHA7P2218a_Sidney Maddock.jpg",
-            "copyright" : "Sidney Maddock"
+            "src" : "images/photos/ShawnCarey.crop[1}.jpg",
+            "copyright" : "Shawn P. Carey/Migration Productions"
         }]
         },
         //FALL

@@ -168,6 +168,7 @@ var createMap = function(){
 
         dojo.connect(map,"onUpdateEnd",function(){
             $("#loadingModal").fadeOut();
+            $("#thumbnail").hide();
         });
 
         //var layers = response.itemInfo.itemData,operationalLayers;

@@ -59,8 +59,8 @@ function init(){
         "title" : "Winter:<br>Snowbirds Heading South",
         "text" : "In the winter, Piping Plovers flock to the sandy beaches and mudflats of the Gulf of Mexico and Atlantic coasts where they dine on worms, tiny crustaceans, and other marine animals. At least, that’s what about half of the 8,000 or so Piping Plovers do. The whereabouts of the other half of the population has long been unknown, but now scientists are starting to solve the mystery. In 2011, an international team of shorebird biologists, including Audubon scientists, discovered more than 1,000 plovers wintering in the Bahamas.<br><br>While many conservation efforts have focused on safeguarding the birds’ breeding habitat, we now know that plovers spend nearly two-thirds of the year outside these areas. And research shows that even a small drop in the number of birds that survive the winter can threaten the recovery of the species. So Audubon is working to conserve healthy winter habitats in the United States, and extending its reach, partnering with conservation groups in the Bahamas to increase monitoring efforts and help spread local awareness about threatened birds.",
         "images" : [{
-            "src" : "images/photos/nj_pipl_migration[1].jpg",
-            "copyright" : "Todd Pover"
+            "src" : "images/photos/AM_Plover_0049.jpg",
+            "copyright" : "John Huba"
         }]
         },
         //SPRING

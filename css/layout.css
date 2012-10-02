@@ -380,6 +380,31 @@ h1{
     background-color:#90b5df;
 }
 
+#legendToggle{
+    position:absolute;
+    padding:5px;
+    width:190px;
+    background:#444;
+    color:#fff;
+    font-size:12px;
+    top:0;
+    right:0;
+    z-index:50;
+    cursor:pointer;
+}
+
+#legend{
+    display:none;
+    position:absolute;
+    padding:5px;
+    width:190px;
+    background:#dadada;
+    font-size:12px;
+    right:0;
+    top:25px;
+    z-index:50;
+}
+
 .zoomToggle{
     display:none;
     position:absolute;

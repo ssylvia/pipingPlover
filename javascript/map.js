@@ -172,15 +172,17 @@ var createMap = function(){
             $("#thumbnail").hide();
         });
 
-        //var layers = response.itemInfo.itemData,operationalLayers;
+        var layers = response.itemInfo.itemData.operationalLayers;
 
         if(map.loaded){
+            initUI(layers);
             setSection(section);
             changeSidePanel();
             $("#zoomToggle").show();
         }
         else{
             dojo.connect(map,"onLoad",function(){
+                initUI(layers);
                 setSection(section);
                 changeSidePanel();
                 $("#zoomToggle").show();
@@ -214,3 +216,64 @@ var createMap = function(){
     });
 
 };
+
+
+function initUI(layers) {
+
+    var layerInfo = buildLayersList(layers);
+
+    if(layerInfo.length > 0){
+    	var legendDijit = new esri.dijit.Legend({
+			map:map,
+			layerInfos:layerInfo
+		},"legendContent");
+        legendDijit.startup();
+    }
+    else{
+        dojo.byId("legendContent").innerHTML = "";
+    }
+}
+
+function buildLayersList(layers){
+        //layers  arg is  response.itemInfo.itemData.operationalLayers;
+        var layerInfos = [];
+        dojo.forEach(layers, function(mapLayer, index){
+          var layerInfo = {};
+          if (mapLayer.featureCollection && mapLayer.type !== "CSV") {
+            if (mapLayer.featureCollection.showLegend === true) {
+              dojo.forEach(mapLayer.featureCollection.layers, function(fcMapLayer){
+                if (fcMapLayer.showLegend !== false) {
+                  layerInfo = {
+                    "layer": fcMapLayer.layerObject,
+                    "title": mapLayer.title,
+                    "defaultSymbol": false
+                  };
+                  if (mapLayer.featureCollection.layers.length > 1) {
+                    layerInfo.title += " - " + fcMapLayer.layerDefinition.name;
+                  }
+                  layerInfos.push(layerInfo);
+                }
+              });
+            }
+          } else if (mapLayer.showLegend !== false) {
+            layerInfo = {
+              "layer": mapLayer.layerObject,
+              "title": mapLayer.title,
+              "defaultSymbol": false
+            };
+            //does it have layers too? If so check to see if showLegend is false
+            if (mapLayer.layers) {
+              var hideLayers = dojo.map(dojo.filter(mapLayer.layers, function(lyr){
+                return (lyr.showLegend === false);
+              }), function(lyr){
+                return lyr.id
+              });
+              if (hideLayers.length) {
+                layerInfo.hideLayers = hideLayers;
+              }
+            }
+            layerInfos.push(layerInfo);
+          }
+        });
+        return layerInfos;
+      }

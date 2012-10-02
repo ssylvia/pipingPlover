@@ -22,6 +22,16 @@ $(document).ready(function(){
         iPad = true;
         $("#banner").css("height",125);
     }
+    $("#legendToggle").click(function(){
+        if ($(this).html() === "LEGEND ▼"){
+            $(this).html("LEGEND ▲");
+            $("#legend").stop(true,true).slideDown("fast");
+        }
+        else{
+            $(this).html("LEGEND ▼");
+            $("#legend").stop(true,true).slideUp("fast");
+        }
+    });
     $("#learnMore").click(function(){
         window.open("http://bit.ly/UUiPDT");
     });

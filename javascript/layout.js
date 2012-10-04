@@ -4,6 +4,7 @@ $(window).resize(function(){
 });
 
 $(document).ready(function(){
+
     $("#loader").css({
         left:($(document).width()/2 - 50),
         top:($(document).height()/2 - 50)
@@ -192,6 +193,9 @@ var setUpTabs = function(){
         $("#contentSlider").append("<div class='contentSlide tabSlide "+tab.season+"Slide "+tab.season+"' season='"+i+"'><div class='photoMargin'></div><div class='tabPhoto fader "+tab.season+"'><img class='tabPhoto singlePhoto' src='"+sectionData[i].images[0].src+"' alt=''></div><div class='tabPhoto photoCreditCon "+tab.season+"' style='color:#ccc;'><p class='photoCredit'>"+sectionData[i].images[0].copyright+"</p></div><table class='titleBar "+tab.season+"'><tbody><tr><td class='prevArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='prevArrow'></div></td><td class='tabTitle "+tab.season+"title'>"+sectionData[i].title+"</td><td class='nextArrowCon "+tab.season+" arrowCon tabArrow' style='width:10px; padding:10px;'><div class='nextArrow'></div>"+addStart(i)+"</td></tr></tbody></table><div class='textContent "+tab.season+"'>"+sectionData[i].text+"</div></div>");
     });
 
+    $(".nextArrow").first().addClass("blinking").addClass("white");
+    startBlinking();
+
     $(".tab").eq(section).addClass("selected");
     $(".tab").click(function(){
         setSection($(this).index());
@@ -322,6 +326,11 @@ var setLayers = function(sec){
         });
 
         $(".nextArrowCon").click(function(){
+            if($(".nextArrow").first().hasClass("blinking")){
+                $(".nextArrow").first().removeClass("blinking");
+                $(".nextArrow").first().removeClass("white");
+                $(".nextArrow").first().css("border-left-color","#fff");
+            }
             hideInfo($("#hoverInfoSlide"),$("#hoverInfoArrowSlide"));
             var current = undefined;
             $(".contentSlide").each(function(i){
@@ -549,3 +558,19 @@ var positionCredit = function(){
     });
     */
 };
+
+var startBlinking = function(){
+    setTimeout(function() {
+        if($(".nextArrow").first().hasClass("blinking")){
+            if($(".nextArrow").first().hasClass("white")){
+                $(".nextArrow").first().removeClass("white")
+                $(".nextArrow").first().css("border-left-color","#d81e05");
+            }
+            else{
+                $(".nextArrow").first().addClass("white")
+                $(".nextArrow").first().css("border-left-color","#fff");
+            }
+        }
+        startBlinking();
+    }, 500);
+}

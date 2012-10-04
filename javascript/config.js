@@ -5,7 +5,7 @@ function init(){
     configOptions = {
         webmap : "015f54544e0a49328adbdfe8dec58464",
         title : "Beating the Odds: A Year in the Life of a Piping Plover",
-        subtitle : "Piping Plovers flock to the same shores that attract people. These birds are on the brink, with only 8,000 adults left. From Canada to the Caribbean, Audubon is working to safeguard sandy reaches critical to the birds’ survival, and spreading the message to share the beach. ",
+        subtitle : "Piping Plovers flock to the same shores that attract people. These birds are on the brink, with only 8,000 adults left. From Canada to the Caribbean, Audubon is working to safeguard sandy reaches critical to the birds' survival, and encouraging people to share the beach.",
         tabTitles : [{
     		"title" : "<span class='tabTextBig'>Intro</span>",
             "season" : "intro"
@@ -57,7 +57,7 @@ function init(){
         //WINTER
         {
         "title" : "Winter:<br>Snowbirds Heading South",
-        "text" : "In the winter, Piping Plovers flock to the sandy beaches and mudflats of the Gulf of Mexico and Atlantic coasts where they dine on worms, tiny crustaceans, and other marine animals. At least, that’s what about half of the 8,000 or so Piping Plovers do. The whereabouts of the other half of the population has long been unknown, but now scientists are starting to solve the mystery. In 2011, an international team of shorebird biologists, including Audubon scientists, discovered more than 1,000 plovers wintering in the Bahamas.<br><br>While many conservation efforts have focused on safeguarding the birds’ breeding habitat, we now know that plovers spend nearly two-thirds of the year outside these areas. And research shows that even a small drop in the number of birds that survive the winter can threaten the recovery of the species. So Audubon is working to conserve healthy winter habitats in the United States, and extending its reach, partnering with conservation groups in the Bahamas to increase monitoring efforts and help spread local awareness about threatened birds.",
+        "text" : "In the winter, Piping Plovers flock to the sandy beaches and mudflats of the Gulf of Mexico and Atlantic coasts where they dine on worms, tiny crustaceans, and other marine animals. At least, that’s what about half of the 8,000 or so Piping Plovers do. The whereabouts of the other half of the population has long been unknown, but now scientists are starting to solve the mystery. In 2011, an international team of shorebird biologists, including Audubon scientists, discovered more than 1,000 plovers wintering in the Bahamas.<br><br>While many conservation efforts have focused on safeguarding the birds’ breeding habitat, we now know that plovers spend nearly two-thirds of the year outside these areas. And research shows that even a small drop in the number of birds that survive the winter can threaten the recovery of the species. So Audubon is working to conserve healthy winter habitats in the United States, and extending its reach, partnering with the Bahamas National Trust and other groups to increase conservation and protection efforts and help build local awareness about these threatened birds.",
         "images" : [{
             "src" : "images/photos/AM_Plover_0049.jpg",
             "copyright" : "John Huba"

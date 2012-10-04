@@ -464,7 +464,7 @@ var setLayers = function(sec){
             }
         });
 
-        seasonExtent = new esri.geometry.Extent({"xmin":-11297106.502475392,"ymin":1180515.909290458,"xmax":-7236771.559967909,"ymax":5157687.365023692,
+        seasonExtent = new esri.geometry.Extent({"xmin":-11124556.508485924,"ymin":2306790.0257323366,"xmax":-7528958.697952189,"ymax":4322281.587555328,
   "spatialReference":{"wkid":102100}});
         map.setExtent(seasonExtent);
     }
@@ -490,7 +490,7 @@ var setLayers = function(sec){
         map.getLayer(findLayerName("summer")).show();
         map.getLayer(findLayerName("winter")).show();
 
-        seasonExtent = new esri.geometry.Extent({"xmin":-13762659.286841381,"ymin":652183.1697834609,"xmax":-5641989.401826414,"ymax":8606526.081249928,
+        seasonExtent = new esri.geometry.Extent({"xmin":-12202120.917371638,"ymin":2129558.052478955,"xmax":-5010925.296304167,"ymax":6160541.176124938,
   "spatialReference":{"wkid":102100}});
         map.setExtent(seasonExtent);
     }

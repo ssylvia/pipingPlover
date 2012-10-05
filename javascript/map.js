@@ -221,6 +221,7 @@ function initUI(layers) {
 
     var layerInfo = buildLayersList(layers);
 
+    /*
     if(layerInfo.length > 0){
     	var legendDijit = new esri.dijit.Legend({
 			map:map,
@@ -231,6 +232,7 @@ function initUI(layers) {
     else{
         dojo.byId("legendContent").innerHTML = "";
     }
+    */
 }
 
 function buildLayersList(layers){

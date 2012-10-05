@@ -421,6 +421,7 @@ var setLayers = function(sec){
     map.getLayer(findLayerName("SpringMigration")).hide();
     map.getLayer(findLayerName("FallMigration")).hide();
     if(sec === 1){
+        $("#legendImg").attr("src","images/photos/BerryIs_6904.jpg");
         map.getLayer(findLayerName("summer")).show();
         map.getLayer(findLayerName("winter")).hide();
         dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
@@ -436,6 +437,7 @@ var setLayers = function(sec){
         map.setExtent(seasonExtent);
     }
     else if(sec === 2){
+        $("#legendImg").attr("src","images/photos/Coastal Engineering_9754.jpg");
         map.getLayer(findLayerName("FallMigration")).show();
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).hide();
@@ -453,6 +455,7 @@ var setLayers = function(sec){
         map.setExtent(seasonExtent);
     }
     else if(sec === 3){
+        $("#legendImg").attr("src","images/photos/Deveaux Bank_0027.jpg");
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).show();
         dojo.forEach(map.getLayer(findLayerName("csv")).graphics,function(grp){
@@ -469,6 +472,7 @@ var setLayers = function(sec){
         map.setExtent(seasonExtent);
     }
     else if(sec === 4){
+        $("#legendImg").attr("src","images/photos/federalLands1.jpg");
         map.getLayer(findLayerName("SpringMigration")).show();
         map.getLayer(findLayerName("summer")).hide();
         map.getLayer(findLayerName("winter")).hide();
@@ -486,6 +490,7 @@ var setLayers = function(sec){
         map.setExtent(seasonExtent);
     }
     else{
+        $("#legendImg").attr("src","images/photos/130131578_10.jpg");
         map.getLayer(findLayerName("csv")).hide();
         map.getLayer(findLayerName("summer")).show();
         map.getLayer(findLayerName("winter")).show();

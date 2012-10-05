@@ -405,6 +405,10 @@ h1{
     z-index:50;
 }
 
+#legendImg{
+    width:190px;
+}
+
 .zoomToggle{
     display:none;
     position:absolute;

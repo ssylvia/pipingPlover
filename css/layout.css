@@ -396,8 +396,7 @@ h1{
 #legend{
     display:none;
     position:absolute;
-    padding:5px;
-    width:190px;
+    width:200px;
     background:#dadada;
     font-size:12px;
     right:0;
@@ -406,7 +405,7 @@ h1{
 }
 
 #legendImg{
-    width:190px;
+    width:200px;
 }
 
 .zoomToggle{

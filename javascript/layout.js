@@ -242,6 +242,9 @@ var setSection = function(sec){
 };
 
 var getPhotoTags = function (attr) {
+    if(attr.Photo_1_credit === "Lindsay Addison" && attr.Site_title === "Little Talbot Island, FL"){
+        attr.Photo_1_credit = "Walker Golder";
+    }
     if (attr.Photo_2_URL !== null && attr.Photo_3_URL !== null){
         return "<img src='images/photos/"+attr.Photo_1_URL+".jpg' credit='"+attr.Photo_1_credit+"' caption='"+attr.Photo_1_caption+"' alt=''><img src='images/photos/"+attr.Photo_2_URL+".jpg' credit='"+attr.Photo_2_credit+"' caption='"+attr.Photo_2_caption+"' alt=''><img src='images/photos/"+attr.Photo_3_URL+".jpg' credit='"+attr.Photo_3_credit+"' caption='"+attr.Photo_3_caption+"' alt=''>";
     }

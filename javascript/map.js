@@ -178,6 +178,14 @@ var createMap = function(){
             setSection(section);
             changeSidePanel();
             $("#zoomToggle").show();
+            dojo.forEach(map.getLayer(map.graphicsLayerIds[0]).graphics,function(g){
+                if(g.attributes.Site_title === "Little Talbot Island, FL"){
+                    g.attributes.Photo_1_credit = "Walker Golder";
+                }
+                if(g.attributes.Site_title === "Tigertail Beach, FL"){
+                    g.attributes.Site_title = "Tigertail Lagoon and Sand Dollar Island, FL";
+                }
+            });
         }
         else{
             dojo.connect(map,"onLoad",function(){
@@ -185,6 +193,14 @@ var createMap = function(){
                 setSection(section);
                 changeSidePanel();
                 $("#zoomToggle").show();
+                dojo.forEach(map.getLayer(map.graphicsLayerIds[0]).graphics,function(g){
+                    if(g.attributes.Site_title === "Little Talbot Island, FL"){
+                        g.attributes.Photo_1_credit = "Walker Golder";
+                    }
+                    if(g.attributes.Site_title === "Tigertail Beach, FL"){
+                        g.attributes.Site_title = "Tigertail Lagoon and Sand Dollar Island, FL";
+                    }
+                });
             });
         }
 
